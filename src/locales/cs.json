@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "Portfolio stážisty"
+  },
+  "intro": {
+    "title": "Úvod",
+    "text": "This portfolio provides an overview of the editorial internship at World of Tanks Content Team. It covers contributions to the content production workflow, showcases selected projects and case studies, presents voluntary side projects, and concludes with key outcomes, learning insights, and reflections on the internship experience. "
+  },
+  "nav": {
+    "overview": "Přehled",
+    "contentShowcase": "Content",
+    "toolsDeveloped": "Tools",
+    "contacts": "Kontakty"
+  },
+  "controls": {
+    "language": "Jazyk",
+    "switchToCzech": "Přepnout do češtiny",
+    "switchToEnglish": "Přepnout do angličtiny",
+    "openMenu": "Otevřít navigační nabídku",
+    "closeMenu": "Zavřít navigační nabídku",
+    "pageProgress": "Průběh čtení stránky",
+    "onThisPage": "Na této stránce",
+    "preferences": "Předvolby",
+    "theme": "Motiv",
+    "light": "Světlý",
+    "dark": "Tmavý",
+    "system": "Systémový"
+  }
+}

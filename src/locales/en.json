@@ -1,0 +1,29 @@
+{
+  "site": {
+    "title": "Internship Portfolio"
+  },
+  "intro": {
+    "title": "Introduction",
+    "text": "This portfolio provides an overview of the editorial internship at World of Tanks Content Team. It covers contributions to the content production workflow, showcases selected projects and case studies, presents voluntary side projects, and concludes with key outcomes, learning insights, and reflections on the internship experience. "
+  },
+  "nav": {
+    "overview": "Overview",
+    "contentShowcase": "Content",
+    "toolsDeveloped": "Tools",
+    "contacts": "Contacts"
+  },
+  "controls": {
+    "language": "Language",
+    "switchToCzech": "Switch to Czech",
+    "switchToEnglish": "Switch to English",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "pageProgress": "Page reading progress",
+    "onThisPage": "On this page",
+    "preferences": "Preferences",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}
