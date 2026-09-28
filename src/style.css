@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
+@import './fonts.css';
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -11,8 +12,8 @@
 @layer theme {
   :root {
     --ui-primary: #f25322 !important;
-    --ui-bg: #dcd0c0;
-    --main-bg: #f0f0f0;
+    --main-bg: #dcd0c0;
+    --ui-bg: #f0f0f0;
   }
 
   .dark {
@@ -31,10 +32,26 @@
   body {
     @apply text-eerie-black transition-colors duration-300 dark:text-white;
     background-color: var(--ui-bg);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: 400;
+  }
+
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  [role='button'],
+  .technical-label {
+    font-family: 'Zilla Slab', serif;
   }
 }
 
 @layer components {
+  .link {
+    @apply inline-flex items-center gap-1 font-medium text-highlight decoration-highlight/40 transition-colors hover:decoration-highlight focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight;
+  }
+
   .section-nav-active::after {
     background-color: #f25322 !important;
   }
@@ -44,12 +61,6 @@
     transition: background-color 300ms;
   }
 
-  .page-section {
-    @apply mx-auto min-h-screen max-w-6xl scroll-mt-36 px-6 py-6 my-6;
-    /* background-color: var(--ui-bg); */
-    /* border: 2px solid var(--ui-primary); */
-    /* border-radius: 12px; */
-  }
   h1,
   h2,
   h3,
@@ -58,12 +69,45 @@
   h6 {
     color: var(--ui-primary);
     font-style: normal;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font: 1em;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 1em;
+    font-weight: 600;
     text-transform: capitalize;
   }
+
+  .page-title,
   h1 {
-    font-weight: 600;
+    font-family: 'New Rocker', system-ui;
+    font-weight: 400;
+  }
+
+  h1 {
     font-size: 1.4em;
+  }
+  h2 {
+    font-size: 1.2em;
+    margin-top: var(max(1.5rem, 12px));
+  }
+
+  .swords-list {
+    list-style: none;
+    padding-inline-start: 1.75rem;
+  }
+
+  .swords-list > li {
+    position: relative;
+  }
+
+  .swords-list > li::before {
+    content: '';
+    position: absolute;
+    top: 0.25em;
+    inset-inline-start: -1.6rem;
+    width: 1.15rem;
+    height: 1.15rem;
+    background-color: var(--ui-primary);
+
+    mask: url('/swords-marker.svg') center / contain no-repeat;
+    -webkit-mask: url('/swords-marker.svg') center / contain no-repeat;
   }
 }

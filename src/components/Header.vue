@@ -1,8 +1,8 @@
 <template>
   <UHeader :title="t('site.title')" :toggle="false" :ui="headerUi"
-    class="text-2xl sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/90 text-eerie-black shadow-sm backdrop-blur-2xl transition-colors duration-300 dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
+    class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/90 text-base text-eerie-black shadow-sm backdrop-blur-2xl transition-colors duration-300 sm:text-2xl dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
     <template #left>
-      <a class="flex shrink-0 items-center gap-2 font-semibold tracking-tight" href="#home">
+      <a class="flex min-w-0 items-center gap-2 font-semibold tracking-tight" href="#home">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
           class="shrink-0">
@@ -14,7 +14,7 @@
             d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
           <path d="m15 5 4 4" />
         </svg>
-        {{ t('site.title') }}
+        <span class="page-title truncate">{{ t('site.title') }}</span>
       </a>
     </template>
 
@@ -26,20 +26,25 @@
     <template #bottom>
       <UProgress :model-value="pageProgress" :max="100" color="#f25322" size="xs"
         :aria-label="t('controls.pageProgress')" :ui="{ base: 'rounded-none bg-black/10 dark:bg-white/10' }" />
+      <div class="hidden border-t border-black/5 bg-white/80 backdrop-blur-xl md:block dark:border-white/5 dark:bg-eerie-black/80">
+        <div class="mx-auto flex max-w-6xl justify-start px-6 py-2">
+          <NavBar :items="navigationItems" orientation="horizontal" />
+        </div>
+      </div>
     </template>
   </UHeader>
 
-  <div
-    class="sticky top-16 z-40 hidden border-b border-black/5 bg-white/80 backdrop-blur-xl md:block dark:border-white/5 dark:bg-eerie-black/80">
-    <div class="mx-auto flex max-w-6xl justify-start px-6 py-2">
-      <NavBar :items="navigationItems" orientation="horizontal" />
-    </div>
-  </div>
-
   <nav
-    class="fixed top-20 right-3 z-40 rounded-xl border border-black/10 bg-white/90 p-1 shadow-sm backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/90"
-    :aria-label="t('site.title')">
-    <NavBar :items="navigationItems[0]" orientation="vertical" collapsed />
+    class="fixed left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center overflow-x-auto rounded-xl border border-black/10 bg-white/90 p-1 shadow-lg backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/90"
+    style="bottom: max(0.75rem, env(safe-area-inset-bottom))"
+    :aria-label="t('controls.onThisPage')">
+    <a v-for="({ id, label, icon }) in sectionDefinitions" :key="id" :href="`#${id}`"
+      class="flex size-12 shrink-0 touch-manipulation items-center justify-center rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight"
+      :class="activeSection === id ? 'bg-highlight/10 text-highlight' : 'text-muted hover:bg-black/5 dark:hover:bg-white/10'"
+      :aria-label="t(label)" :aria-current="activeSection === id ? 'location' : undefined">
+      <UIcon :name="icon" class="pointer-events-none size-7" aria-hidden="true" />
+      <span class="sr-only">{{ t(label) }}</span>
+    </a>
   </nav>
 </template>
 
@@ -78,7 +83,7 @@ watchEffect(() => {
 
 const headerUi = {
   container: 'h-16 max-w-6xl gap-4 px-4 sm:px-6',
-  left: 'shrink-0 self-center lg:flex-none',
+  left: 'min-w-0 shrink self-center lg:flex-none',
   center: 'hidden',
   right: 'ml-auto shrink-0 self-center gap-2 lg:flex-none',
 }

@@ -1,11 +1,11 @@
 <template>
     <UNavigationMenu :items="items" :orientation="orientation" :collapsed="collapsed" :tooltip="collapsed"
         :popover="collapsed" color="primary" variant="pill" highlight highlight-color="primary"
-        :class="orientation === 'horizontal' ? 'justify-start' : 'w-fit'" :ui="{
+        :class="orientation === 'horizontal' ? 'justify-center' : 'w-fit'" :ui="{
             link: collapsed ? 'p-2' : undefined,
-            linkLabel: 'whitespace-nowrap font-semibold',
+            linkLabel: collapsed ? 'sr-only' : 'whitespace-nowrap font-semibold',
             linkLeadingIcon: collapsed
-                ? 'size-10 text-muted group-data-[active]:text-highlight'
+                ? 'size-7 text-muted group-data-[active]:text-highlight'
                 : 'text-muted group-data-[active]:text-highlight',
 
         }" />

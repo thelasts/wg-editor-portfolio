@@ -1,5 +1,5 @@
 <template>
-  <UFooter
+  <UFooter id="site-footer"
     class="border-t border-black/10 bg-white transition-colors duration-300 dark:border-white/10 dark:bg-eerie-black"
     :ui="footerUi">
     <template #left>
@@ -8,7 +8,8 @@
         materials. It is presented solely for portfolio purposes. All associated rights remain with Wargaming and their
         respective owners.
       </p>
-      <p class="text-muted text-sm select-none">Made by A. {{ new Date().getFullYear() }}</p>
+      <p class="text-muted text-sm select-none">Made by A. {{ new
+        Date().getFullYear() }}</p>
     </template>
 
     <template #right>
@@ -37,7 +38,7 @@
 defineOptions({ name: 'SiteFooter' })
 
 const footerUi = {
-  container: 'max-w-6xl px-6 py-6 lg:py-6',
+  container: 'max-w-6xl px-6 pt-6 pb-24 md:py-6',
   left: 'mt-0',
   right: 'gap-1',
 }

@@ -8,9 +8,10 @@
   },
   "nav": {
     "overview": "Přehled",
-    "contentShowcase": "Content",
-    "toolsDeveloped": "Tools",
-    "contacts": "Kontakty"
+    "contentShowcase": "Ukázky obsahu",
+    "toolsDeveloped": "Technické projekty",
+    "contacts": "Kontakty",
+    "skills": "Dovednosti"
   },
   "controls": {
     "language": "Jazyk",
@@ -24,6 +25,23 @@
     "theme": "Motiv",
     "light": "Světlý",
     "dark": "Tmavý",
-    "system": "Systémový"
+    "system": "Systémový",
+    "openSplitter": "Click to reveal/hide content comparison",
+    "dragSplitter": "Tažením porovnejte",
+    "viewLiveContent": "Publikovaný obsah:"
+  },
+  "contentShowcase": {
+    "portal": "Portal",
+    "sse": "Weekly sales articles",
+    "salute": "WoT Salute Reinforcements Mission",
+    "steam": "Steam articles",
+    "steamText": "Two Steam articles were produced during the internship. The Upgraded Visuals/Sound v2.4 article delivered the stronger performance, reaching a 2.33% Unique view rate, above the total view rate (total unique views ÷ total total unique impressions) of 1.36%, and received twice as many comments as the Steel Hunter Relaunch article.",
+    "otherContent": "Other channels",
+    "galleryTitle": "Promo Screens gallery",
+    "galleryText": "Totally, 24 promo deliverables of in-game promotional content were produced. The gallery below allows to examine selected copies."
+  },
+  "toolsDeveloped": {
+    "AssetManagerText": "",
+    "TankToolsText": ""
   }
 }
