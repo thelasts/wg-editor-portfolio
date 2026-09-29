@@ -2,10 +2,9 @@
   <UApp :locale="uiLocale">
     <Header />
     <main class="main-bg pb-24 md:pb-0">
-      <SectionCard id="home" :title="t('intro.title')">
+      <SectionCard id="overview" :title="t('nav.overview')">
         <p>{{ t('intro.text') }}</p>
       </SectionCard>
-      <SectionCard id="overview" :title="t('nav.overview')" />
       <SectionCard id="content-showcase" :title="t('nav.contentShowcase')">
         <h2>{{ t('contentShowcase.portal') }}</h2>
         <ContentCard title="Celebrate 16 Years With Special Merch Discounts!"
@@ -26,8 +25,8 @@
             These articles use updated templates, providing a more captivating sales flow, better user
             experience, and potentially increasing conversion rates.
           </p>
-          <ContentSplitter id="sse-splitter" before-src="/content/compare-sales.png"
-            after-src="/content/sales-type-59-tiger-maus-gsor-1010-fb.png" />
+          <ContentSplitter id="sse-splitter" :before-src="publicAssetUrl('content/compare-sales.png')"
+            :after-src="publicAssetUrl('content/sales-type-59-tiger-maus-gsor-1010-fb.png')" />
         </ContentCard>
         <ContentCard id="twitch-drops-guide" title="Twitch Drops Guide Update"
           :description="t('controls.viewLiveContent')" :links="twitchLinks">
@@ -35,8 +34,8 @@
             portal pages. The refresh focused on improving the user experience by reorganizing the guide to make key
             information—such as participation requirements, account linking, campaign availability, and reward
             collection—easier to find.</p>
-          <ContentSplitter id="twitch-splitter" before-src="/content/compare-twitch-old.png"
-            after-src="/content/compare-twitch.png" />
+          <ContentSplitter id="twitch-splitter" :before-src="publicAssetUrl('content/compare-twitch-old.png')"
+            :after-src="publicAssetUrl('content/compare-twitch.png')" />
         </ContentCard>
         <ContentCard id="tiktok-drops-guide" title="TikTok Drops Guide" :description="t('controls.viewLiveContent')"
           :links="tikTokLinks">
@@ -69,8 +68,20 @@
         <h2>{{ t('contentShowcase.otherContent') }}</h2>
         <ContentCard :title="t('contentShowcase.galleryTitle')">
           <p>{{ t('contentShowcase.galleryText') }}</p>
+          <GalleryCard id="promo-screens-gallery" :assets="promoScreens" label="Promo screens" />
         </ContentCard>
-        <ContentCard title="Newsletters" />
+        <ContentCard title="Newsletters">
+          <ContentMedia id="newsletter" :assets="[
+            {
+              src: publicAssetUrl('email/mail-dukenukem.png'),
+              alt: 'Battle Pass Reloaded: Duke Nukem mail copy.'
+            },
+            {
+              src: publicAssetUrl('email/mail-farcry.png'),
+              alt: 'Battle Pass Special: Far Cry mail copy.'
+            }
+          ]" description="Newsletter showcase." :focus="false" />
+        </ContentCard>
       </SectionCard>
       <SectionCard id="tools-developed" :title="t('nav.toolsDeveloped')">
         <h2>Asset Manager</h2>
@@ -114,8 +125,8 @@
           demonstrating its value beyond the original use-case.
         </p>
         <ContentMedia id="custom-faq-media" :assets="[
-          { src: '/content/faq-basic.gif', alt: 'Custom FAQ in its desktop layout' },
-          { src: '/content/faq-mobile.gif', alt: 'Custom FAQ in its mobile layout' },
+          { src: publicAssetUrl('content/faq-basic.gif'), alt: 'Custom FAQ in its desktop layout' },
+          { src: publicAssetUrl('content/faq-mobile.gif'), alt: 'Custom FAQ in its mobile layout' },
         ]" description="Custom FAQ shown in desktop and mobile layouts." />
         <h3>Interactive Video Tutorial</h3>
         <p>
@@ -127,13 +138,25 @@
         </p>
         <ContentMedia id="video-tutorial-media" :assets="[
           {
-            src: '/content/video-tutorial.gif',
+            src: publicAssetUrl('content/video-tutorial.gif'),
             alt: 'Interactive step-by-step video tutorial for the TikTok Drops guide',
           },
         ]" description="Interactive step-by-step video tutorial for the TikTok Drops guide." />
       </SectionCard>
-      <SectionCard id="skills" :title="t('nav.skills')" />
-      <SectionCard id="contacts" :title="t('nav.contacts')" />
+      <SectionCard id="skills" :title="t('nav.skills')">
+        <p>A hefty bunch. But later.</p>
+      </SectionCard>
+      <SectionCard id="contacts" :title="t('nav.contacts')">
+        <ContentMedia id="contacts-tg" :assets="[{
+          src: publicAssetUrl('contact-tg.jpg'),
+          alt: 'Telegram profile card.'
+        },
+        {
+          src: publicAssetUrl('contact-wa.jpg'),
+          alt: 'WhatsApp profile card.'
+        }
+        ]" description="Social profile cards" :focus="false" />
+      </SectionCard>
     </main>
     <Footer />
   </UApp>
@@ -149,9 +172,61 @@ import Header from '@/components/Header.vue'
 import ContentCard from '@/components/ContentCard.vue'
 import SectionCard from '@/components/SectionCard.vue'
 import ContentMedia from './components/ContentMedia.vue'
+import GalleryCard from '@/components/GalleryCard.vue'
 
 const { locale, t } = useI18n()
 const uiLocale = computed(() => (locale.value === 'cs' ? cs : en))
+const publicAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
+const promoScreens = [
+  {
+    src: publicAssetUrl('promo/promo-BoosteroidStart-1jul2026-2026-09-22-14_08_10.png'),
+    alt: 'Boosteroid promo',
+  },
+  {
+    src: publicAssetUrl('promo/promo-BP20-Push-30jul2026-2026-09-22-14_07_20.png'),
+    alt: 'Battle Pass promo, progress push',
+  },
+  {
+    src: publicAssetUrl('promo/promo-BPSpecial-Bundles-27jul2026-2026-09-22-14_07_05.png'),
+    alt: 'Battle Pass special promo',
+  },
+  {
+    src: publicAssetUrl('promo/promo-equalize-june-2026-ep1-2026-09-22-14_06_52.png'),
+    alt: 'Arcade Cabinet\'s Equalize promo',
+  },
+  {
+    src: publicAssetUrl('promo/promo-Frontline261-3may2026-2026-09-22-14_07_29.png'),
+    alt: 'Frontline promo, intro (1/2)',
+  },
+  {
+    src: publicAssetUrl('promo/promo-Frontline261-3may2026-2026-09-22-14_07_47.png'),
+    alt: 'Frontline promo, bundles (2/2)',
+  },
+  {
+    src: publicAssetUrl('promo/promo-steel-hunter-june-2026-2026-09-22-14_03_43.png'),
+    alt: 'Steel Hunter promo',
+  },
+  // TODO 
+  // {
+  //   src: publicAssetUrl(
+  //     'promo/promoscreens-draft-preview-PRMP-Halloween2026-14oct2026-150792-2026-09-23-09_58_23.png',
+  //   ),
+  //   alt: 'Halloween promo, intro (1/2)',
+  // },
+  // {
+  //   src: publicAssetUrl(
+  //     'promo/promoscreens-draft-preview-PRMP-Halloween2026-14oct2026-150792-2026-09-23-09_58_36.png',
+  //   ),
+  //   alt: 'Halloween promo, bundles (2/2)',
+  // },
+  {
+    src: publicAssetUrl(
+      'promo/promoscreens-internal-PRMP-BP20-LastCall-25aug2026-2026-09-23-02_53_08.png',
+    ),
+    alt: 'Battle Pass promo, last call',
+  },
+]
 
 const anniversaryLinks = [
   {

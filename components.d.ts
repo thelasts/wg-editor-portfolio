@@ -25,6 +25,7 @@ declare module 'vue' {
     UApp: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UButton: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
     UCard: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Card.vue')['default']
+    UCarousel: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Carousel.vue')['default']
     UCollapsible: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Collapsible.vue')['default']
     UContainer: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Container.vue')['default']
     UDropdownMenu: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/DropdownMenu.vue')['default']

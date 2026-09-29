@@ -56,6 +56,14 @@
     background-color: #f25322 !important;
   }
 
+  .header-option-active {
+    color: var(--ui-primary);
+    background-color: color-mix(in srgb, var(--ui-primary) 12%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--ui-primary) 35%, transparent),
+      0 0 0.75rem color-mix(in srgb, var(--ui-primary) 28%, transparent);
+  }
+
   .main-bg {
     background-color: var(--main-bg);
     transition: background-color 300ms;
