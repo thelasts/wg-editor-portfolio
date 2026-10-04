@@ -1,5 +1,5 @@
 <template>
-    <UCard :id="id" variant="subtle" :title="title" :description="description"
+    <UCard v-reveal="'subsection'" :id="id" variant="subtle" :title="title" :description="description"
         class="my-4 scroll-mt-36 border-black/10 bg-white/60 shadow-sm dark:border-white/10 dark:bg-black/10"
         :ui="cardUi">
         <template #title>
