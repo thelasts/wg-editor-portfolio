@@ -11,10 +11,13 @@
                 class="group relative flex min-w-0 items-center justify-center overflow-hidden rounded-xl border-0 bg-transparent p-0 text-inherit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight sm:flex-1"
                 :class="hasRevealMode ? 'cursor-pointer' : undefined"
                 @click="toggleAsset(index)">
-                <img :src="asset.src" :alt="asset.alt ?? description ?? ''"
+                <ContentVideo v-if="isVideo(asset)" :src="asset.src" :thumbnail-src="asset.thumbnailSrc"
+                    :alt="asset.alt ?? description ?? ''" :width="asset.width" :height="asset.height"
+                    :active="isAssetRevealed(index)" />
+                <LazyImage v-else :src="asset.src" :placeholder-src="asset.placeholderSrc"
+                    :alt="asset.alt ?? description ?? ''" :width="asset.width" :height="asset.height"
                     class="block max-h-[32rem] max-w-full object-contain transition-[filter,opacity] duration-300 motion-reduce:transition-none"
-                    :class="!isAssetRevealed(index) ? 'opacity-35 blur-sm grayscale' : 'opacity-100 blur-none grayscale-0'"
-                    loading="lazy" decoding="async" />
+                    :class="!isAssetRevealed(index) ? 'opacity-35 blur-sm grayscale' : 'opacity-100 blur-none grayscale-0'" />
 
                 <span v-if="hasRevealMode && !isAssetRevealed(index)"
                     class="pointer-events-none absolute inset-0 grid place-items-center bg-white/35 text-eerie-black backdrop-blur-[1px] transition-colors group-hover:bg-white/25 dark:bg-black/40 dark:text-white dark:group-hover:bg-black/30"
@@ -36,12 +39,30 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
+import ContentVideo from '@/components/ContentVideo.vue'
+import LazyImage from '@/components/LazyImage.vue'
 
-interface ContentMediaAsset {
+interface ContentImageAsset {
     src: string
     alt?: string
     revealed?: boolean
+    width: number
+    height: number
+    placeholderSrc?: string
+    type?: 'image'
 }
+
+interface ContentVideoAsset {
+    src: string
+    thumbnailSrc: string
+    alt?: string
+    revealed?: boolean
+    width: number
+    height: number
+    type: 'video'
+}
+
+type ContentMediaAsset = ContentImageAsset | ContentVideoAsset
 
 const props = withDefaults(
   defineProps<{
@@ -74,6 +95,10 @@ function getInitialRevealState() {
 
 function isAssetRevealed(index: number) {
     return !hasRevealMode.value || revealedAssets.value[index]
+}
+
+function isVideo(asset: ContentMediaAsset): asset is ContentVideoAsset {
+    return asset.type === 'video'
 }
 
 function assetButtonLabel(asset: ContentMediaAsset, index: number) {

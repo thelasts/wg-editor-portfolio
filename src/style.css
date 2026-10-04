@@ -65,8 +65,33 @@
   }
 
   .main-bg {
+    --spotlight-color: color-mix(in srgb, var(--ui-primary) 35%, transparent) !important;
     background-color: var(--main-bg);
     transition: background-color 300ms;
+  }
+
+  .heading-anchor {
+    @apply flex w-fit max-w-full items-center gap-1 scroll-mt-36;
+  }
+
+  .heading-anchor__link {
+    @apply inline-flex shrink-0 items-center justify-center rounded-sm p-1 text-current opacity-0 transition-opacity duration-150 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight;
+  }
+
+  .heading-anchor:hover .heading-anchor__link {
+    opacity: 0.35;
+  }
+
+  .heading-anchor .heading-anchor__link:hover,
+  .heading-anchor .heading-anchor__link:focus-visible,
+  .heading-anchor .heading-anchor__link--active {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .heading-anchor__link {
+      opacity: 0.35;
+    }
   }
 
   h1,
@@ -75,12 +100,23 @@
   h4,
   h5,
   h6 {
-    color: var(--ui-primary);
     font-style: normal;
     font-family: 'Fira Sans Condensed', sans-serif;
     font-size: 1em;
     font-weight: 600;
     text-transform: capitalize;
+  }
+
+  h1,
+  h2 {
+    color: var(--ui-primary);
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--ui-text-highlighted);
   }
 
   .page-title,
@@ -94,7 +130,10 @@
   }
   h2 {
     font-size: 1.2em;
-    margin-top: var(max(1.5rem, 12px));
+  }
+
+  :where(h2, h3, h4, h5, h6):not(:first-child) {
+    margin-top: 1.5rem;
   }
 
   .swords-list {

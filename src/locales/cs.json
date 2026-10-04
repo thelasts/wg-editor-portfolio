@@ -4,7 +4,8 @@
   },
   "intro": {
     "title": "Úvod",
-    "text": "This portfolio provides an overview of the editorial internship at World of Tanks Content Team. It covers contributions to the content production workflow, showcases selected projects and case studies, presents voluntary side projects, and concludes with key outcomes, learning insights, and reflections on the internship experience. "
+    "text": "This portfolio provides an overview of the editorial internship at World of Tanks Content Team. It covers contributions to the content production workflow, showcases selected projects and case studies, presents voluntary side projects, and concludes with key outcomes, learning insights, and reflections on the internship experience.",
+    "connect": "Let's connect!"
   },
   "nav": {
     "overview": "Přehled",
@@ -28,7 +29,9 @@
     "system": "Systémový",
     "openSplitter": "Click to reveal/hide content comparison",
     "dragSplitter": "Tažením porovnejte",
-    "viewLiveContent": "Publikovaný obsah:"
+    "viewLiveContent": "Publikovaný obsah:",
+    "copyLinkToHeading": "Kopírovat odkaz na tento nadpis",
+    "linkCopied": "Odkaz zkopírován"
   },
   "contentShowcase": {
     "portal": "Portal",
@@ -38,10 +41,23 @@
     "steamText": "Two Steam articles were produced during the internship. The Upgraded Visuals/Sound v2.4 article delivered the stronger performance, reaching a 2.33% Unique view rate, above the total view rate (total unique views ÷ total total unique impressions) of 1.36%, and received twice as many comments as the Steel Hunter Relaunch article.",
     "otherContent": "Other channels",
     "galleryTitle": "Promo Screens",
-    "galleryText": "Totally, 24 promo deliverables of in-game promotional content were produced. The gallery below allows to examine selected copies."
+    "galleryText": "Totally, 24 promo deliverables of in-game promotional content were produced. The gallery below allows to examine selected copies.",
+    "newsletters": {
+      "dukeNukemDescription": "Part of promotion campaign of reintroduced limited-time progression event. The work on this project also included creating in-game content for progression push.",
+      "farCryDescription": "Promotion piece for brand new special episode of Battle Pass. The work included creating content for promoting the featured crew members and premium bundles."
+    }
   },
   "toolsDeveloped": {
     "AssetManagerText": "",
-    "TankToolsText": ""
+    "TankToolsText": "",
+    "faqMediaDescription": "Custom FAQ shown in desktop and mobile layouts.",
+    "videoTutorialMediaDescription": "Interactive step-by-step video tutorial for the TikTok Drops guide."
+  },
+  "skills": {
+    "f2pGamePublishingDescription": "Built a practical understanding of how the World of Tanks Publishing team brings a free-to-play title to market, collaborating across Product, LiveOps, Social Media, Community, and Competitive Gaming.",
+    "contentDescription": "Strengthened copywriting and editorial judgment in a fast-moving production environment, delivering original, high-quality content while incorporating feedback from multiple stakeholders.",
+    "technicalDescription": "Built several widgets for the game’s web portal from scratch, contributed to other editors’ components, and shipped and maintained an in-house tool that streamlined asset management.",
+    "communicationTeamworkDescription": "Integrated quickly into the team’s day-to-day rhythm, proactively supported colleagues, and built relationships through networking events, the sports club, and the board games club.",
+    "internationalWorkplaceDescription": "Learned to work effectively in a multicultural corporate environment, adapting communication across backgrounds and perspectives while appreciating the value diverse teams bring to shared goals."
   }
 }

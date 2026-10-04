@@ -1,5 +1,5 @@
 <template>
-    <UCollapsible v-model:open="isOpen" :unmount-on-hide="false" class="content-comparison">
+    <UCollapsible v-model:open="isOpen" :unmount-on-hide="true" class="content-comparison">
         <template #default>
             <UButton type="button" :label="t('controls.openSplitter')" color="neutral" variant="outline"
                 trailing-icon="i-lucide-chevron-down" block class="content-comparison__trigger group" :ui="{
@@ -12,21 +12,18 @@
         </template>
 
         <template #content>
-            <div class="content-comparison__viewport">
-                <div class="content-comparison__sizer" aria-hidden="true">
-                    <img :src="beforeSrc" alt="" />
-                    <img :src="afterSrc" alt="" />
-                </div>
-
+            <div class="content-comparison__viewport" :style="viewportStyle">
                 <USplitter :id="id" :key="splitterKey" :items="items" orientation="horizontal"
                     class="content-comparison__splitter">
                     <template #before>
-                        <img :src="beforeSrc" :alt="beforeAlt"
+                        <img :src="beforeSrc" :alt="beforeAlt" :width="beforeWidth" :height="beforeHeight"
+                            loading="lazy" fetchpriority="low" decoding="async"
                             class="content-comparison__image content-comparison__image--before" />
                     </template>
 
                     <template #after>
-                        <img :src="afterSrc" :alt="afterAlt"
+                        <img :src="afterSrc" :alt="afterAlt" :width="afterWidth" :height="afterHeight"
+                            loading="lazy" fetchpriority="low" decoding="async"
                             class="content-comparison__image content-comparison__image--after" />
                     </template>
 
@@ -44,16 +41,20 @@
 
 <script setup lang="ts">
 import type { SplitterItem } from '@nuxt/ui'
-import { nextTick, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-withDefaults(
+const props = withDefaults(
     defineProps<{
         id: string
         beforeSrc: string
         afterSrc: string
         beforeAlt?: string
         afterAlt?: string
+        beforeWidth: number
+        beforeHeight: number
+        afterWidth: number
+        afterHeight: number
     }>(),
     {
         beforeAlt: 'Page before the update',
@@ -64,6 +65,9 @@ withDefaults(
 const { t } = useI18n()
 const isOpen = ref(false)
 const splitterKey = ref(0)
+const viewportStyle = computed(() => ({
+    aspectRatio: `${Math.max(props.beforeWidth, props.afterWidth)} / ${Math.max(props.beforeHeight, props.afterHeight)}`,
+}))
 
 const panelClass = 'relative items-start overflow-hidden bg-white/60 dark:bg-eerie-black/40'
 
@@ -116,19 +120,6 @@ watch(isOpen, async (open) => {
     border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
     border-radius: 0.75rem;
     background-color: var(--ui-bg);
-}
-
-.content-comparison__sizer {
-    display: grid;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.content-comparison__sizer>img {
-    grid-area: 1 / 1;
-    display: block;
-    width: 100%;
-    height: auto;
 }
 
 .content-comparison__splitter {

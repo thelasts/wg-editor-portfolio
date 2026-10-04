@@ -1,16 +1,10 @@
 <template>
-  <section
-    :id="id"
-    :aria-labelledby="titleId"
-    class="mx-auto min-h-screen max-w-6xl scroll-mt-36 px-4 py-4 sm:px-6 sm:py-6"
-  >
-    <UCard
-      variant="outline"
-      class="flex min-h-[calc(100vh-3rem)] flex-col overflow-hidden border-black/10 bg-white/80 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition-colors duration-300 dark:border-white/10 dark:bg-eerie-black/80 dark:ring-white/5"
-      :ui="cardUi"
-    >
+  <section :id="id" :aria-labelledby="titleId" class="mx-auto max-w-6xl scroll-mt-36 px-4 py-4 sm:px-6 sm:py-6">
+    <UCard variant="outline"
+      class="flex flex-col overflow-hidden border-black/10 bg-white/80 shadow-lg ring-1 ring-black/5 backdrop-blur-sm transition-colors duration-300 dark:border-white/10 dark:bg-eerie-black/80 dark:ring-white/5"
+      :ui="cardUi">
       <template #header>
-        <h1 :id="titleId">{{ title }}</h1>
+        <HeadingAnchor as="h1" :id="titleId">{{ title }}</HeadingAnchor>
       </template>
 
       <slot />

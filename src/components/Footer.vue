@@ -14,7 +14,7 @@
 
     <template #right>
       <UButton class="footer-icon-button" icon="i-lucide-mail" color="neutral" variant="ghost" size="xl" square
-        to="mailto:khomambe@gmail.com?subject=portfolio" aria-label="Email" :ui="iconUi" />
+        to="mailto:khomambe@proton.me?subject=portfolio" aria-label="Email" :ui="iconUi" />
       <UButton class="footer-icon-button" icon="i-lucide-github" color="neutral" variant="ghost" size="xl" square
         to="https://github.com/thelasts/wg-editor-portfolio" target="_blank" rel="noopener noreferrer"
         aria-label="GitHub" :ui="iconUi" />
