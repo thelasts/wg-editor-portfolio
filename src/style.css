@@ -36,6 +36,11 @@
     font-weight: 400;
   }
 
+  ::selection {
+    color: inherit;
+    background-color: color-mix(in srgb, var(--ui-primary) 25%, transparent);
+  }
+
   button,
   input,
   select,
@@ -54,6 +59,13 @@
 
   .section-nav-active::after {
     background-color: #f25322 !important;
+  }
+
+  .section-nav-active,
+  .section-nav-active:hover,
+  .section-nav-active:focus-visible,
+  .section-nav-active :where([data-slot='linkLeadingIcon'], [data-slot='linkTrailingIcon']) {
+    color: var(--ui-primary) !important;
   }
 
   .header-option-active {

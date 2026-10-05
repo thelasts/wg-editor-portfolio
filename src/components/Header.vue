@@ -70,14 +70,25 @@ let sectionObserver: IntersectionObserver | undefined
 
 watchEffect(() => {
   navigationItems.value = [
-    sectionDefinitions.map(({ id, label, icon }) => ({
-      id,
-      label: t(label),
-      icon,
-      to: `#${id}`,
-      active: activeSection.value === id,
-      class: activeSection.value === id ? 'section-nav-active text-highlight' : undefined,
-    })),
+    sectionDefinitions.map((section) => {
+      const children = 'children' in section
+        ? section.children.map((child) => ({
+            label: 'translated' in child && child.translated ? t(child.label) : child.label,
+            icon: child.icon,
+            to: `#${child.id}`,
+          }))
+        : undefined
+
+      return {
+        id: section.id,
+        label: t(section.label),
+        icon: section.icon,
+        to: `#${section.id}`,
+        children,
+        active: activeSection.value === section.id,
+        class: activeSection.value === section.id ? 'section-nav-active text-highlight' : undefined,
+      }
+    }),
   ]
 })
 

@@ -2,7 +2,8 @@
     <UCollapsible v-model:open="isOpen" :unmount-on-hide="true" class="content-comparison">
         <template #default>
             <UButton type="button" :label="t('controls.openSplitter')" color="neutral" variant="outline"
-                trailing-icon="i-lucide-chevron-down" block class="content-comparison__trigger group" :ui="{
+                icon="i-lucide-arrow-right-left" trailing-icon="i-lucide-chevron-down" block
+                class="content-comparison__trigger group" :ui="{
                     label: 'text-left',
                     trailingIcon: [
                         'transition-transform duration-200 ease-out',
@@ -22,8 +23,8 @@
                     </template>
 
                     <template #after>
-                        <img :src="afterSrc" :alt="afterAlt" :width="afterWidth" :height="afterHeight"
-                            loading="lazy" fetchpriority="low" decoding="async"
+                        <img :src="afterSrc" :alt="afterAlt" :width="afterWidth" :height="afterHeight" loading="lazy"
+                            fetchpriority="low" decoding="async"
                             class="content-comparison__image content-comparison__image--after" />
                     </template>
 
