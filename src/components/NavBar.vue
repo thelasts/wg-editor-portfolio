@@ -14,7 +14,8 @@
             childLink: orientation === 'horizontal'
                 ? 'hover:before:bg-black/5 focus-visible:before:bg-highlight/10 focus-visible:before:outline-highlight/30 dark:hover:before:bg-white/10'
                 : undefined,
-            childLinkLabel: orientation === 'horizontal' ? 'whitespace-normal' : undefined,
+            childLinkIcon: orientation === 'horizontal' ? 'dark:text-toned' : undefined,
+            childLinkLabel: orientation === 'horizontal' ? 'dark:text-toned whitespace-normal' : undefined,
 
         }" />
 </template>
