@@ -1,8 +1,8 @@
 <template>
   <UMarquee
-    class="main-bg rounded-2xl border border-black/10 px-2 py-2 dark:border-white/10"
+    class="main-bg rounded-2xl border border-black/10 px-2 py-2 md:hidden dark:border-white/10"
     pause-on-hover
-    overlay="false"
+    :overlay="false"
     aria-label="Contact links"
   >
     <UButton v-for="contact in contacts" :key="contact.name" class="contact-icon-button" :icon="contact.icon"
@@ -10,6 +10,16 @@
       :target="contact.external ? '_blank' : undefined" :rel="contact.external ? 'noopener noreferrer' : undefined"
       :aria-label="contact.name" />
   </UMarquee>
+
+  <div
+    class="main-bg hidden items-center justify-center gap-4 rounded-2xl border border-black/10 px-2 py-2 md:flex dark:border-white/10"
+    aria-label="Contact links"
+  >
+    <UButton v-for="contact in contacts" :key="contact.name" class="contact-icon-button" :icon="contact.icon"
+      color="neutral" variant="ghost" size="xl" square :to="contact.to"
+      :target="contact.external ? '_blank' : undefined" :rel="contact.external ? 'noopener noreferrer' : undefined"
+      :aria-label="contact.name" />
+  </div>
 </template>
 
 <script setup lang="ts">

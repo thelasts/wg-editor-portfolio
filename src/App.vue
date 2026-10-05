@@ -1,8 +1,7 @@
 <template>
   <UApp :locale="uiLocale">
     <Header />
-    <UPageCard as="main" variant="naked" spotlight spotlight-color="primary"
-      class="main-bg [--spotlight-size:120px] pb-24 md:pb-0" :ui="mainCardUi">
+    <UPageCard as="main" variant="naked" class="main-bg pb-24 md:pb-0" :ui="mainCardUi">
       <SectionCard id="overview" :title="t('nav.overview')">
         <p>{{ t('intro.text') }}</p>
         <p class="font-bold pt-2">{{ t('intro.connect') }}</p>
@@ -224,7 +223,6 @@ const publicAssetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.repl
 
 const mainCardUi = {
   root: 'block rounded-none',
-  spotlight: 'bg-transparent',
   container: 'block gap-0 p-0 sm:p-0 lg:block',
 }
 

@@ -65,7 +65,6 @@
   }
 
   .main-bg {
-    --spotlight-color: color-mix(in srgb, var(--ui-primary) 35%, transparent) !important;
     background-color: var(--main-bg);
     transition: background-color 300ms;
   }
@@ -76,7 +75,6 @@
     transition:
       opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
       transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: opacity, transform;
   }
 
   .reveal-on-scroll--subsection {
@@ -87,7 +85,6 @@
   .reveal-on-scroll.is-revealed {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
-    will-change: auto;
   }
 
   .heading-anchor {

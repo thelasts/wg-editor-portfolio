@@ -1,6 +1,6 @@
 <template>
   <div class="relative min-h-72 overflow-hidden bg-black/5 dark:bg-white/5">
-    <div class="h-[min(70vh,48rem)] overflow-x-hidden overflow-y-auto overscroll-contain scroll-smooth"
+    <div class="h-[min(70vh,48rem)] overflow-x-hidden overflow-y-auto scroll-smooth"
       :aria-label="`${alt} preview.`" tabindex="0">
       <LazyImage :src="src" :alt="alt" :width="width" :height="height"
         class="block h-auto w-full" />

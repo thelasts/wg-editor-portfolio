@@ -1,16 +1,16 @@
 <template>
-  <span class="relative block max-h-[32rem] max-w-full overflow-hidden">
+  <span ref="container" class="relative block max-h-[32rem] max-w-full overflow-hidden">
     <LazyImage
       :src="thumbnailSrc"
       :alt="alt"
       :width="width"
       :height="height"
-      class="block max-h-[32rem] max-w-full object-contain transition-[filter,opacity] duration-300 motion-reduce:transition-none"
-      :class="active ? 'opacity-100 blur-none grayscale-0' : 'opacity-35 blur-sm grayscale'"
+      class="block max-h-[32rem] max-w-full object-contain transition-opacity duration-300 motion-reduce:transition-none"
+      :class="active ? 'opacity-100' : 'opacity-35'"
     />
 
     <video
-      v-if="active"
+      v-if="active && isInView"
       ref="video"
       :width="width"
       :height="height"
@@ -19,7 +19,7 @@
       loop
       muted
       playsinline
-      preload="auto"
+      preload="metadata"
       aria-hidden="true"
       @canplay="startPlayback"
       @error="handleError"
@@ -30,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, ref, useTemplateRef, watch } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 
 import LazyImage from '@/components/LazyImage.vue'
 
@@ -44,7 +44,27 @@ const props = defineProps<{
 }>()
 
 const video = useTemplateRef('video')
+const container = useTemplateRef('container')
 const isReady = ref(false)
+const isInView = ref(false)
+let observer: IntersectionObserver | undefined
+
+onMounted(() => {
+  if (!container.value || !('IntersectionObserver' in window)) {
+    isInView.value = true
+    return
+  }
+
+  observer = new IntersectionObserver(
+    ([entry]) => {
+      isInView.value = entry?.isIntersecting ?? false
+    },
+    { rootMargin: '200px 0px' },
+  )
+  observer.observe(container.value)
+})
+
+onBeforeUnmount(() => observer?.disconnect())
 
 async function startPlayback() {
   if (!video.value || !props.active) return
@@ -62,10 +82,10 @@ function handleError() {
 }
 
 watch(
-  () => [props.active, props.src] as const,
-  async ([active]) => {
+  () => [props.active, props.src, isInView.value] as const,
+  async ([active, , inView]) => {
     isReady.value = false
-    if (!active) return
+    if (!active || !inView) return
 
     await nextTick()
     video.value?.load()

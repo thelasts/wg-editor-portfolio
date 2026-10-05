@@ -16,11 +16,11 @@
                     :active="isAssetRevealed(index)" />
                 <LazyImage v-else :src="asset.src" :placeholder-src="asset.placeholderSrc"
                     :alt="asset.alt ?? description ?? ''" :width="asset.width" :height="asset.height"
-                    class="block max-h-[32rem] max-w-full object-contain transition-[filter,opacity] duration-300 motion-reduce:transition-none"
-                    :class="!isAssetRevealed(index) ? 'opacity-35 blur-sm grayscale' : 'opacity-100 blur-none grayscale-0'" />
+                    class="block max-h-[32rem] max-w-full object-contain transition-opacity duration-300 motion-reduce:transition-none"
+                    :class="!isAssetRevealed(index) ? 'opacity-35' : 'opacity-100'" />
 
                 <span v-if="hasRevealMode && !isAssetRevealed(index)"
-                    class="pointer-events-none absolute inset-0 grid place-items-center bg-white/35 text-eerie-black backdrop-blur-[1px] transition-colors group-hover:bg-white/25 dark:bg-black/40 dark:text-white dark:group-hover:bg-black/30"
+                    class="pointer-events-none absolute inset-0 grid place-items-center bg-white/55 text-eerie-black transition-colors group-hover:bg-white/45 dark:bg-black/55 dark:text-white dark:group-hover:bg-black/45"
                     aria-hidden="true">
                     <span
                         class="inline-flex items-center gap-2 rounded-full border border-current/20 bg-white/85 px-4 py-2 font-semibold shadow-sm dark:bg-eerie-black/85">
