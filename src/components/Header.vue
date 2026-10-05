@@ -1,6 +1,6 @@
 <template>
   <UHeader :title="t('site.title')" :toggle="false" :ui="headerUi"
-    class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/95 text-base text-eerie-black shadow-sm backdrop-blur-md transition-colors duration-300 sm:text-2xl dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
+    class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/95 text-base text-eerie-black shadow-sm backdrop-blur transition-colors duration-300 sm:text-2xl dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
     <template #left>
       <a class="flex min-w-0 items-center gap-2 font-semibold tracking-tight" href="#overview">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -26,8 +26,7 @@
     <template #bottom>
       <UProgress :model-value="pageProgress" :max="100" color="#f25322" size="xs"
         :aria-label="t('controls.pageProgress')" :ui="{ base: 'rounded-none bg-black/10 dark:bg-white/10' }" />
-      <div
-        class="hidden border-t border-black/5 bg-white/95 md:block dark:border-white/5 dark:bg-eerie-black/95">
+      <div class="hidden border-t border-black/5 bg-white/95 md:block dark:border-white/5 dark:bg-eerie-black/95">
         <div class="mx-auto flex max-w-6xl justify-start px-6 py-2">
           <NavBar :items="navigationItems" orientation="horizontal" />
         </div>
@@ -73,10 +72,10 @@ watchEffect(() => {
     sectionDefinitions.map((section) => {
       const children = 'children' in section
         ? section.children.map((child) => ({
-            label: 'translated' in child && child.translated ? t(child.label) : child.label,
-            icon: child.icon,
-            to: `#${child.id}`,
-          }))
+          label: 'translated' in child && child.translated ? t(child.label) : child.label,
+          icon: child.icon,
+          to: `#${child.id}`,
+        }))
         : undefined
 
       return {

@@ -30,6 +30,12 @@
         target="_blank" rel="noopener noreferrer" aria-label="World of Tanks">
         <span class="footer-brand-icon footer-brand-icon--tanks" aria-hidden="true" />
       </UButton>
+      <span class="text-muted text-lg align-[8px] select-none"> | </span>
+      <UButton class="footer-icon-button" color="neutral" variant="ghost" size="xl" square
+        to="https://www.flaticon.com/authors/itim2101" target="_blank" rel="noopener noreferrer"
+        aria-label="Vehicle icons by itim2101 on Flaticon">
+        <span class="footer-brand-icon footer-brand-icon--flaticon" aria-hidden="true" />
+      </UButton>
     </template>
   </UFooter>
 </template>
@@ -72,6 +78,10 @@ const iconUi = {
 
 .footer-brand-icon--tanks {
   mask-image: url('/tanks.svg');
+}
+
+.footer-brand-icon--flaticon {
+  mask-image: url('/flaticon-itim2101.png');
 }
 
 .footer-brand-icon--wargaming {

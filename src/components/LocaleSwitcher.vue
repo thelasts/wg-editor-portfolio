@@ -3,9 +3,13 @@
     class="inline-flex h-10 shrink-0 cursor-pointer items-center gap-0.5 rounded-full bg-black/5 p-1 leading-none text-black transition-colors hover:bg-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-current dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
     :aria-label="switchLabel" :title="switchLabel" @click="toggleLocale">
     <span aria-hidden="true" class="inline-flex size-8 items-center justify-center rounded-full text-lg transition-all"
-      :class="locale === 'en' ? 'bg-white opacity-100 shadow-sm dark:bg-white/20' : 'opacity-40'">🇬🇧</span>
+      :class="locale === 'en' ? 'bg-white opacity-100 shadow-sm dark:bg-white/20' : 'opacity-40'">
+      <img src="/en.png" alt="" class="h-auto w-5" />
+    </span>
     <span aria-hidden="true" class="inline-flex size-8 items-center justify-center rounded-full text-lg transition-all"
-      :class="locale === 'cs' ? 'bg-white opacity-100 shadow-sm dark:bg-white/20' : 'opacity-40'">🇨🇿</span>
+      :class="locale === 'cs' ? 'bg-white opacity-100 shadow-sm dark:bg-white/20' : 'opacity-40'">
+      <img src="/cs.png" alt="" class="h-auto w-5" />
+    </span>
   </button>
 </template>
 

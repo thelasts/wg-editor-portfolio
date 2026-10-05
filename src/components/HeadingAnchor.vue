@@ -1,12 +1,16 @@
 <template>
   <component :is="as" :id="id" class="heading-anchor group/heading">
-    <span>
-      <slot />
-    </span>
-    <a :href="`#${id}`" class="heading-anchor__link" :class="{ 'heading-anchor__link--active': isActive || copied }"
-      :aria-label="copied ? t('controls.linkCopied') : t('controls.copyLinkToHeading')"
-      :title="copied ? t('controls.linkCopied') : t('controls.copyLinkToHeading')" @click="copyLink">
-      <UIcon name="i-lucide-share-2" class="size-[0.8em]" aria-hidden="true" />
+    <a
+      :href="`#${id}`"
+      class="heading-anchor__link"
+      :class="{ 'heading-anchor__link--active': isActive || copied }"
+      :title="copied ? t('controls.linkCopied') : t('controls.copyLinkToHeading')"
+      @click="copyLink"
+    >
+      <span>
+        <slot />
+      </span>
+      <UIcon name="i-lucide-share-2" class="heading-anchor__icon size-[0.8em]" aria-hidden="true" />
     </a>
     <span class="sr-only" aria-live="polite">{{ copied ? t('controls.linkCopied') : '' }}</span>
   </component>

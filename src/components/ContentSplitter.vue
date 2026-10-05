@@ -17,15 +17,19 @@
                 <USplitter :id="id" :key="splitterKey" :items="items" orientation="horizontal"
                     class="content-comparison__splitter">
                     <template #before>
+                        <MediaLoadingIndicator v-if="!beforeLoaded" />
                         <img :src="beforeSrc" :alt="beforeAlt" :width="beforeWidth" :height="beforeHeight"
-                            loading="lazy" fetchpriority="low" decoding="async"
-                            class="content-comparison__image content-comparison__image--before" />
+                            loading="lazy" fetchpriority="high" decoding="async"
+                            class="content-comparison__image content-comparison__image--before transition-opacity duration-300 motion-reduce:transition-none"
+                            :class="beforeLoaded ? 'opacity-100' : 'opacity-0'" @load="beforeLoaded = true" />
                     </template>
 
                     <template #after>
+                        <MediaLoadingIndicator v-if="!afterLoaded" />
                         <img :src="afterSrc" :alt="afterAlt" :width="afterWidth" :height="afterHeight" loading="lazy"
-                            fetchpriority="low" decoding="async"
-                            class="content-comparison__image content-comparison__image--after" />
+                            fetchpriority="high" decoding="async"
+                            class="content-comparison__image content-comparison__image--after transition-opacity duration-300 motion-reduce:transition-none"
+                            :class="afterLoaded ? 'opacity-100' : 'opacity-0'" @load="afterLoaded = true" />
                     </template>
 
                     <template #resize-handle>
@@ -44,6 +48,7 @@
 import type { SplitterItem } from '@nuxt/ui'
 import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import MediaLoadingIndicator from '@/components/MediaLoadingIndicator.vue'
 
 const props = withDefaults(
     defineProps<{
@@ -66,6 +71,8 @@ const props = withDefaults(
 const { t } = useI18n()
 const isOpen = ref(false)
 const splitterKey = ref(0)
+const beforeLoaded = ref(false)
+const afterLoaded = ref(false)
 const viewportStyle = computed(() => ({
     aspectRatio: `${Math.max(props.beforeWidth, props.afterWidth)} / ${Math.max(props.beforeHeight, props.afterHeight)}`,
 }))
@@ -83,6 +90,20 @@ watch(isOpen, async (open) => {
     await nextTick()
     splitterKey.value += 1
 })
+
+watch(
+    () => props.beforeSrc,
+    () => {
+        beforeLoaded.value = false
+    },
+)
+
+watch(
+    () => props.afterSrc,
+    () => {
+        afterLoaded.value = false
+    },
+)
 </script>
 
 <style scoped>

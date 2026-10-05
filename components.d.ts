@@ -22,6 +22,7 @@ declare module 'vue' {
     HeadingAnchor: typeof import('./src/components/HeadingAnchor.vue')['default']
     LazyImage: typeof import('./src/components/LazyImage.vue')['default']
     LocaleSwitcher: typeof import('./src/components/LocaleSwitcher.vue')['default']
+    MediaLoadingIndicator: typeof import('./src/components/MediaLoadingIndicator.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     NewsletterPreview: typeof import('./src/components/NewsletterPreview.vue')['default']
     SectionCard: typeof import('./src/components/SectionCard.vue')['default']
@@ -43,5 +44,6 @@ declare module 'vue' {
     UProgress: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Progress.vue')['default']
     USeparator: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']
     USplitter: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Splitter.vue')['default']
+    VehiclePattern: typeof import('./src/components/VehiclePattern.vue')['default']
   }
 }

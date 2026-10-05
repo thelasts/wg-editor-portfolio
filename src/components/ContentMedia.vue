@@ -9,8 +9,7 @@
                 :aria-label="hasRevealMode ? assetButtonLabel(asset, index) : undefined"
                 :aria-pressed="hasRevealMode ? isAssetRevealed(index) : undefined"
                 class="group relative flex min-w-0 items-center justify-center overflow-hidden rounded-xl border-0 bg-transparent p-0 text-inherit focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight sm:flex-1"
-                :class="hasRevealMode ? 'cursor-pointer' : undefined"
-                @click="toggleAsset(index)">
+                :class="hasRevealMode ? 'cursor-pointer' : undefined" @click="toggleAsset(index)">
                 <ContentVideo v-if="isVideo(asset)" :src="asset.src" :thumbnail-src="asset.thumbnailSrc"
                     :alt="asset.alt ?? description ?? ''" :width="asset.width" :height="asset.height"
                     :active="isAssetRevealed(index)" />
@@ -31,7 +30,7 @@
             </component>
         </div>
 
-        <figcaption v-if="description" :id="descriptionId" class="mt-3 text-center text-sm text-muted">
+        <figcaption v-if="description" :id="descriptionId" class="mt-3 technical-label text-center text-sm text-muted">
             {{ description }}
         </figcaption>
     </UContainer>
@@ -65,16 +64,16 @@ interface ContentVideoAsset {
 type ContentMediaAsset = ContentImageAsset | ContentVideoAsset
 
 const props = withDefaults(
-  defineProps<{
-    id: string
-    assets: [ContentMediaAsset] | [ContentMediaAsset, ContentMediaAsset]
-    description?: string
-    focus?: boolean
-  }>(),
-  {
-    description: undefined,
-    focus: true,
-  },
+    defineProps<{
+        id: string
+        assets: [ContentMediaAsset] | [ContentMediaAsset, ContentMediaAsset]
+        description?: string
+        focus?: boolean
+    }>(),
+    {
+        description: undefined,
+        focus: true,
+    },
 )
 
 const visibleAssets = computed(() => props.assets)

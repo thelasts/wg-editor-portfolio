@@ -1,203 +1,226 @@
 <template>
   <UApp :locale="uiLocale">
     <Header />
-    <UPageCard as="main" variant="naked" class="main-bg pb-24 md:pb-0" :ui="mainCardUi">
-      <SectionCard id="overview" :title="t('nav.overview')">
-        <p>{{ t('intro.text') }}</p>
-        <p class="font-bold pt-2">{{ t('intro.connect') }}</p>
-        <HeadingAnchor id="contacts">{{ t('nav.contacts') }}</HeadingAnchor>
-        <ContactMarquee />
-      </SectionCard>
-      <SectionCard id="content-showcase" :title="t('nav.contentShowcase')">
-        <p>During the internship, a total of <span class="font-bold">76 content items across 14 content types</span>
-          were
-          delivered. The associated
-          milestones covered the full publishing workflow, including copywriting, CMS layout, asset preparation,
-          localization, feedback implementation, support content placement, finalization, and release.</p>
-        <HeadingAnchor id="portal">{{ t('contentShowcase.portal') }}</HeadingAnchor>
-        <p>A total of <span class="font-bold">21</span> articles were delivered under direct ownership, alongside
-          production support for other team
-          members’ articles (supporting promoscreens, technical support, asset management, etc.).</p>
-        <ContentCard anchor-id="anniversary-merch-discounts" title="Celebrate 16 Years With Special Merch Discounts!"
-          :description="t('controls.viewLiveContent')" :links="anniversaryLinks">
-          <p>
-            The article was part of the <a
-              href="https://worldoftanks.eu/en/news/general-news/wot-16-anniversary-august-2026/" target="_blank"
-              rel="noopener noreferrer" class="link">World
-              of Tanks' Anniversary</a> campaign and highlighted the partner promo
-            campaign. Page
-            contained two general landing points, along with multiple buttons for inidividual products. The article
-            demonstrated
-            notably strong engagement, showing a total
-            click rate of 169.1% and a unique-user CTR of 35.5%.
-          </p>
-        </ContentCard>
-        <ContentCard anchor-id="weekly-sales-articles" :title="t('contentShowcase.sse')"
-          :description="t('controls.viewLiveContent')" :links="sseLinks">
-          <p>
-            Two Special Sales Event (SSE) articles were produced during the internship.
-            These articles use updated templates, providing a more captivating sales flow, better user
-            experience, and potentially increasing conversion rates.
-          </p>
-          <ContentSplitter id="sse-splitter" :before-src="publicAssetUrl('content/compare-sales.webp')"
-            :after-src="publicAssetUrl('content/sales-type-59-tiger-maus-gsor-1010-fb.webp')" :before-width="1920"
-            :before-height="8553" :after-width="1920" :after-height="8706" />
-        </ContentCard>
-        <ContentCard id="twitch-drops-guide" anchor-id="twitch-drops-guide-heading" title="Twitch Drops Guide Update"
-          :description="t('controls.viewLiveContent')" :links="twitchLinks">
-          <p>The Twitch Drops Guide was revised to align its content and visual structure with the updated standards for
-            portal pages. The refresh focused on improving the user experience by reorganizing the guide to <span
-              class="font-bold">make key
-              information</span>—such as participation requirements, account linking, campaign availability, and reward
-            collection—<span class="font-bold">easier to find</span>.</p>
-          <ContentSplitter id="twitch-splitter" :before-src="publicAssetUrl('content/compare-twitch-old.webp')"
-            :after-src="publicAssetUrl('content/compare-twitch.webp')" :before-width="1920" :before-height="10226"
-            :after-width="1920" :after-height="5110" />
-        </ContentCard>
-        <ContentCard id="tiktok-drops-guide" anchor-id="tiktok-drops-guide-heading" title="TikTok Drops Guide"
-          :description="t('controls.viewLiveContent')" :links="tikTokLinks">
-          <p>Additionally, the TikTok Drops Guide was created as a new community resource to support players
-            participating
-            in social media campaigns on TikTok. Its purpose was to make both campaign instructions and participation
-            requirements easy to understand and to direct users to the World of Tanks official TikTok account.</p>
-        </ContentCard>
+    <div class="main-bg relative isolate overflow-clip">
+      <VehiclePattern />
+      <UPageCard as="main" variant="naked" class="relative z-10 pb-24 md:pb-0" :ui="mainCardUi">
+        <SectionCard id="overview" :title="t('nav.overview')">
+          <p>{{ t('intro.text') }}</p>
+          <h3>TL;DR</h3>
+          <ul class="swords-list space-y-2 my-2">
+            <li>Six-month internship with the World of Tanks Content Team</li>
+            <li>Produced a wide range of game-related content, wrote copy, created layouts in the CMS, and collaborated
+              with stakeholders</li>
+            <li>Helped implement article widgets and developed in-house tools to improve publishing workflows</li>
+            <li>Gained experience in cross-team collaboration, fast-paced production, and delivering high-quality
+              digital
+              content for a major F2P video game</li>
+          </ul>
+          <HeadingAnchor id="contacts">{{ t('nav.contacts') }}</HeadingAnchor>
+          <p class="pb-1">{{ t('intro.connect') }}</p>
+          <ContactMarquee />
+        </SectionCard>
+        <SectionCard id="content-showcase" :title="t('nav.contentShowcase')">
+          <p>During the internship, a total of <span class="font-bold">76 content items across 14 content types</span>
+            were
+            delivered. The associated
+            milestones covered the full publishing workflow, including copywriting, CMS layout, asset preparation,
+            localization, feedback implementation, support content placement, finalization, and release.</p>
+          <HeadingAnchor id="portal">{{ t('contentShowcase.portal') }}</HeadingAnchor>
+          <p>A total of <span class="font-bold">21</span> articles were delivered under direct ownership, alongside
+            production support for other team
+            members’ articles (supporting promoscreens, technical support, asset management, etc.).</p>
+          <ContentCard anchor-id="anniversary-merch-discounts" title="Celebrate 16 Years With Special Merch Discounts!"
+            :description="t('controls.viewLiveContent')" :links="anniversaryLinks"
+            :header-image="publicAssetUrl('content/head/anniversary16_backgroung_shadow_2560x1440.jpg')">
+            <p>
+              The article was part of the <a
+                href="https://worldoftanks.eu/en/news/general-news/wot-16-anniversary-august-2026/" target="_blank"
+                rel="noopener noreferrer" class="link">World
+                of Tanks’ Anniversary</a> campaign and highlighted the partner promo
+              campaign. Page
+              contained two general landing points, along with multiple buttons for inidividual products. The article
+              demonstrated
+              notably strong engagement, showing a total
+              click rate of 169.1% and a unique-user CTR of 35.5%.
+            </p>
+          </ContentCard>
+          <ContentCard anchor-id="weekly-sales-articles" :title="t('contentShowcase.sse')"
+            :description="t('controls.viewLiveContent')" :links="sseLinks"
+            :header-image="publicAssetUrl('content/head/type_59_tiger-maus_gsor_1010_fb_2560x1440.jpg')">
+            <p>
+              Two Special Sales Event (SSE) articles were produced during the internship.
+              These articles use updated templates, providing a more captivating sales flow, better user
+              experience, and potentially increasing conversion rates.
+            </p>
+            <ContentSplitter id="sse-splitter" :before-src="publicAssetUrl('content/compare-sales.webp')"
+              :after-src="publicAssetUrl('content/sales-type-59-tiger-maus-gsor-1010-fb.webp')" :before-width="1920"
+              :before-height="8553" :after-width="1920" :after-height="8706" />
+          </ContentCard>
+          <ContentCard id="twitch-drops-guide" anchor-id="twitch-drops-guide-heading" title="Twitch Drops Guide Update"
+            :description="t('controls.viewLiveContent')" :links="twitchLinks"
+            :header-image="publicAssetUrl('content/head/upd-twitch-guide-2560x1440-new.jpg')">
+            <p>The Twitch Drops Guide was revised to align its content and visual structure with the updated standards
+              for
+              portal pages. The refresh focused on improving the user experience by reorganizing the guide to <span
+                class="font-bold">make key
+                information</span>—such as participation requirements, account linking, campaign availability, and
+              reward
+              collection—<span class="font-bold">easier to find</span>.</p>
+            <ContentSplitter id="twitch-splitter" :before-src="publicAssetUrl('content/compare-twitch-old.webp')"
+              :after-src="publicAssetUrl('content/compare-twitch.webp')" :before-width="1920" :before-height="10226"
+              :after-width="1920" :after-height="5110" />
+          </ContentCard>
+          <ContentCard id="tiktok-drops-guide" anchor-id="tiktok-drops-guide-heading" title="TikTok Drops Guide"
+            :description="t('controls.viewLiveContent')" :links="tikTokLinks"
+            :header-image="publicAssetUrl('content/head/tiktok-drops_asia_eu_esrb_pb__thumbnail_1920x1080.png')">
+            <p>Additionally, the TikTok Drops Guide was created as a new community resource to support players
+              participating
+              in social media campaigns on TikTok. Its purpose was to make both campaign instructions and participation
+              requirements easy to understand and to direct users to the World of Tanks official TikTok account.</p>
+          </ContentCard>
 
-        <ContentCard anchor-id="wot-salute-reinforcements" :title="t('contentShowcase.salute')"
-          :description="t('controls.viewLiveContent')" :links="saluteLinks">
-          <p>
-            The WoT Salute Program is an NA-exclusive campaign of honoring veterans and active
-            military personnel in the United States and Canada. From June to September 2026, five
-            iterations of the recurring WoT Salute article were produced, maintaining a consistent
-            structure and visual identity while incorporating each month's updated missions,
-            rewards, and promotional assets. The work also included producing two supporting token
-            promotions that helped direct eligible players to the program and its current benefits.
+          <ContentCard anchor-id="wot-salute-reinforcements" :title="t('contentShowcase.salute')"
+            :description="t('controls.viewLiveContent')" :links="saluteLinks"
+            :header-image="publicAssetUrl('content/head/wot-salute-september-2026_rich_page_2560x1440.jpg')">
+            <p>
+              The WoT Salute Program is an NA-exclusive campaign of honoring veterans and active
+              military personnel in the United States and Canada. From June to September 2026, five
+              iterations of the recurring WoT Salute article were produced, maintaining a consistent
+              structure and visual identity while incorporating each month’s updated missions,
+              rewards, and promotional assets. The work also included producing two supporting token
+              promotions that helped direct eligible players to the program and its current benefits.
+            </p>
+            <p>
+              The recurring format required careful content updates, asset management, CMS
+              implementation, and coordination with stakeholders to ensure consistency, occasional
+              updates, and timely publication across iterations.
+            </p>
+          </ContentCard>
+          <ContentCard anchor-id="steam-articles" :title="t('contentShowcase.steam')"
+            :description="t('controls.viewLiveContent')" :links="steamLinks"
+            :header-image="publicAssetUrl('content/head/steam-fx.jpg')">
+            <p>{{ t('contentShowcase.steamText') }}</p>
+          </ContentCard>
+          <HeadingAnchor id="other-marketing-channels">{{ t('contentShowcase.otherContent') }}</HeadingAnchor>
+          <ContentCard anchor-id="promo-screens" :title="t('contentShowcase.galleryTitle')"
+            description="In-game optional promos for events, sales, special offers, and news">
+            <p>{{ t('contentShowcase.galleryText') }}</p>
+            <GalleryCard id="promo-screens-gallery" :assets="promoScreens" label="Promo screens" />
+          </ContentCard>
+          <ContentCard anchor-id="newsletters" title="Newsletters"
+            description="Email, game launchers' galleries and notifications">
+            <div class="space-y-4">
+              <UPageCard v-for="(newsletter, index) in newsletterProjects" :key="newsletter.title"
+                :title="newsletter.title" :description="newsletter.description" icon="i-lucide-mail"
+                orientation="horizontal" :reverse="index === 1" variant="subtle"
+                class="overflow-hidden border border-black/10 bg-white/50 dark:border-white/10 dark:bg-black/10"
+                :ui="newsletterCardUi(index)">
+                <template #title>
+                  <HeadingAnchor as="h4" :id="newsletter.id">{{ newsletter.title }}</HeadingAnchor>
+                </template>
+                <NewsletterPreview :src="newsletter.src" :alt="newsletter.alt" :width="newsletter.width"
+                  :height="newsletter.height" :class="index === 1 ? 'order-first' : 'order-last'" />
+              </UPageCard>
+            </div>
+          </ContentCard>
+        </SectionCard>
+        <SectionCard id="tools-developed" :title="t('nav.toolsDeveloped')">
+          <HeadingAnchor id="asset-manager">Asset Manager</HeadingAnchor>
+          <p><span class="font-bold">Asset Manager</span> is a Python desktop application with Tkinter GUI developed to
+            improve the consistency of naming
+            conventions for media assets used in content production.
           </p>
-          <p>
-            The recurring format required careful content updates, asset management, CMS
-            implementation, and coordination with stakeholders to ensure consistency, occasional
-            updates, and timely publication across iterations.
+          <ul class="swords-list space-y-2 my-2">
+            <li>Tool scans selected directory of assets,</li>
+            <li>Matches them against user-defined tag sections,</li>
+            <li>Generates standardized file names for review,</li>
+            <li>Copies approved files while providing a summary file for quicker insert to the CMS.</li>
+          </ul>
+          <p>Addressing inconsistencies in asset naming supports increased
+            productivity, safeguards against hectic asset-naming conventions, and a more reliable and efficient
+            content-production workflow.</p>
+          <ContentMedia id="assetmanager" :assets="[
+            {
+              type: 'image',
+              src: publicAssetUrl('assetmanager.png'),
+              width: 1919,
+              height: 1032,
+              alt: 'Asset Manager GUI screenshot.',
+            }
+          ]" description="Asset Manager desktop application interface." :focus="false" />
+          <HeadingAnchor id="tank-tools">Tank Tools</HeadingAnchor>
+          <p><span class="font-bold">Tank Tools</span> is a small project developed to simplify access to the
+            internal
+            vehicle
+            encyclopedia and other
+            frequently used reference data. It consists of two components:
           </p>
-        </ContentCard>
-        <ContentCard anchor-id="steam-articles" :title="t('contentShowcase.steam')"
-          :description="t('controls.viewLiveContent')" :links="steamLinks">
-          <p>{{ t('contentShowcase.steamText') }}</p>
-        </ContentCard>
-        <HeadingAnchor id="other-marketing-channels">{{ t('contentShowcase.otherContent') }}</HeadingAnchor>
-        <ContentCard anchor-id="promo-screens" :title="t('contentShowcase.galleryTitle')">
-          <p>{{ t('contentShowcase.galleryText') }}</p>
-          <GalleryCard id="promo-screens-gallery" :assets="promoScreens" label="Promo screens" />
-        </ContentCard>
-        <ContentCard anchor-id="newsletters" title="Newsletters">
-          <div class="space-y-4">
-            <UPageCard v-for="(newsletter, index) in newsletterProjects" :key="newsletter.title"
-              :title="newsletter.title" :description="newsletter.description" icon="i-lucide-mail"
-              orientation="horizontal" :reverse="index === 1" variant="subtle"
-              class="overflow-hidden border border-black/10 bg-white/50 dark:border-white/10 dark:bg-black/10"
-              :ui="newsletterCardUi(index)">
-              <template #title>
-                <HeadingAnchor as="h4" :id="newsletter.id">{{ newsletter.title }}</HeadingAnchor>
-              </template>
-              <NewsletterPreview :src="newsletter.src" :alt="newsletter.alt" :width="newsletter.width"
-                :height="newsletter.height" :class="index === 1 ? 'order-first' : 'order-last'" />
-            </UPageCard>
-          </div>
-        </ContentCard>
-      </SectionCard>
-      <SectionCard id="tools-developed" :title="t('nav.toolsDeveloped')">
-        <HeadingAnchor id="asset-manager">Asset Manager</HeadingAnchor>
-        <p><span class="font-bold">Asset Manager</span> is a Python desktop application with Tkinter GUI developed to
-          improve the consistency of naming
-          conventions for media assets used in content production.
-        </p>
-        <ul class="swords-list space-y-2 my-2">
-          <li>Tool scans selected directory of assets,</li>
-          <li>Matches them against user-defined tag sections,</li>
-          <li>Generates standardized file names for review,</li>
-          <li>Copies approved files while providing a summary file for quicker insert to the CMS.</li>
-        </ul>
-        <p>Addressing inconsistencies in asset naming supports increased
-          productivity, safeguards against hectic asset-naming conventions, and a more reliable and efficient
-          content-production workflow.</p>
-        <ContentMedia id="assetmanager" :assets="[
-          {
-            type: 'image',
-            src: publicAssetUrl('assetmanager.png'),
-            width: 1919,
-            height: 1032,
-            alt: 'Asset Manager GUI screenshot.',
-          }
-        ]" description="Asset Manager desktop application interface." :focus="false" />
-        <HeadingAnchor id="tank-tools">Tank Tools</HeadingAnchor>
-        <p><span class="font-bold">Tank Tools</span> is a small project developed to simplify access to the
-          internal
-          vehicle
-          encyclopedia and other
-          frequently used reference data. It consists of two components:
-        </p>
-        <ul class="swords-list space-y-2 my-2">
-          <li>Excel workbook containing an extract from Tankopedia, a list of oftenly used placeholders, the in-game
-            glossary, and
-            other resources used in content production.</li>
-          <li>Encapsulated Python project to communicate with Wargaming API and extract Tankopedia data.</li>
-        </ul>
-        <HeadingAnchor id="widgets">Widgets</HeadingAnchor>
-        <HeadingAnchor as="h3" id="faq-section">FAQ Section</HeadingAnchor>
-        <p>
-          FAQ widget was developed as part of the
-          <a href="#twitch-drops-guide" class="link">Twitch
-            Drops Community Guide's refresh</a>. The widget was designed as a reusable component for future portal
-          content and has since been implemented across
-          <a href="https://worldoftanks.eu/en/news/general-news/crucible-missions-2026/" target="_blank"
-            rel="noopener noreferrer" class="link">
-            different articles
-            <UIcon name="i-lucide-external-link" class="size-3.5" aria-hidden="true" />
-          </a>,
-          demonstrating its value beyond the original use-case.
-        </p>
-        <ContentMedia id="custom-faq-media" :assets="[
-          {
-            type: 'video',
-            src: publicAssetUrl('content/faq-basic.webm'),
-            thumbnailSrc: publicAssetUrl('content/faq-basic_thumb.jpg'),
-            alt: 'Custom FAQ in its desktop layout',
-            width: 815,
-            height: 715,
-            revealed: true,
-          },
-          {
-            type: 'video',
-            src: publicAssetUrl('content/faq-mobile.webm'),
-            thumbnailSrc: publicAssetUrl('content/faq-mobile_thumb.jpg'),
-            alt: 'Custom FAQ in its mobile layout',
-            width: 815,
-            height: 715,
-            revealed: false,
-          },
-        ]" :description="t('toolsDeveloped.faqMediaDescription')" />
-        <HeadingAnchor as="h3" id="interactive-video-tutorial">Interactive Video Tutorial</HeadingAnchor>
-        <p>
-          This widget was developed for the
-          <a href="#tiktok-drops-guide" class="link">TikTok
-            Drops guide</a>. It enabled users
-          to access step-by-step visual instructions directly within the page, reducing the need to navigate between
-          multiple resources.
-        </p>
-        <ContentMedia id="video-tutorial-media" :assets="[
-          {
-            type: 'video',
-            src: publicAssetUrl('content/video-tutorial.webm'),
-            thumbnailSrc: publicAssetUrl('content/video-tutorial_thumb.jpg'),
-            alt: 'Interactive step-by-step video tutorial for the TikTok Drops guide',
-            width: 815,
-            height: 715,
-            revealed: false,
-          },
-        ]" :description="t('toolsDeveloped.videoTutorialMediaDescription')" />
-      </SectionCard>
-      <SectionCard id="skills" :title="t('nav.skills')">
-        <SkillsColumns />
-      </SectionCard>
-    </UPageCard>
+          <ul class="swords-list space-y-2 my-2">
+            <li>Excel workbook containing an extract from Tankopedia, a list of oftenly used placeholders, the in-game
+              glossary, and
+              other resources used in content production.</li>
+            <li>Encapsulated Python project to communicate with Wargaming API and extract Tankopedia data.</li>
+          </ul>
+          <HeadingAnchor id="widgets">Widgets</HeadingAnchor>
+          <HeadingAnchor as="h3" id="faq-section">FAQ Section</HeadingAnchor>
+          <p>
+            FAQ widget was developed as part of the
+            <a href="#twitch-drops-guide" class="link">Twitch
+              Drops Community Guide’s refresh</a>. The widget was designed as a reusable component for future portal
+            content and has since been implemented across
+            <a href="https://worldoftanks.eu/en/news/general-news/crucible-missions-2026/" target="_blank"
+              rel="noopener noreferrer" class="link">
+              different articles
+              <UIcon name="i-lucide-external-link" class="size-3.5" aria-hidden="true" />
+            </a>,
+            demonstrating its value beyond the original use-case.
+          </p>
+          <ContentMedia id="custom-faq-media" :assets="[
+            {
+              type: 'video',
+              src: publicAssetUrl('content/faq-basic.webm'),
+              thumbnailSrc: publicAssetUrl('content/faq-basic_thumb.jpg'),
+              alt: 'Custom FAQ in its desktop layout',
+              width: 815,
+              height: 715,
+              revealed: true,
+            },
+            {
+              type: 'video',
+              src: publicAssetUrl('content/faq-mobile.webm'),
+              thumbnailSrc: publicAssetUrl('content/faq-mobile_thumb.jpg'),
+              alt: 'Custom FAQ in its mobile layout',
+              width: 815,
+              height: 715,
+              revealed: false,
+            },
+          ]" :description="t('toolsDeveloped.faqMediaDescription')" />
+          <HeadingAnchor as="h3" id="interactive-video-tutorial">Interactive Video Tutorial</HeadingAnchor>
+          <p>
+            This widget was developed for the
+            <a href="#tiktok-drops-guide" class="link">TikTok
+              Drops guide</a>. It enabled users
+            to access step-by-step visual instructions directly within the page, reducing the need to navigate between
+            multiple resources.
+          </p>
+          <ContentMedia id="video-tutorial-media" :assets="[
+            {
+              type: 'video',
+              src: publicAssetUrl('content/video-tutorial.webm'),
+              thumbnailSrc: publicAssetUrl('content/video-tutorial_thumb.jpg'),
+              alt: 'Interactive step-by-step video tutorial for the TikTok Drops guide',
+              width: 815,
+              height: 715,
+              revealed: false,
+            },
+          ]" :description="t('toolsDeveloped.videoTutorialMediaDescription')" />
+        </SectionCard>
+        <SectionCard id="skills" :title="t('nav.skills')">
+          <SkillsColumns />
+        </SectionCard>
+      </UPageCard>
+    </div>
     <Footer />
   </UApp>
 </template>
@@ -216,6 +239,7 @@ import GalleryCard from '@/components/GalleryCard.vue'
 import NewsletterPreview from '@/components/NewsletterPreview.vue'
 import SkillsColumns from '@/components/SkillsColumns.vue'
 import ContactMarquee from '@/components/ContactMarquee.vue'
+import VehiclePattern from '@/components/VehiclePattern.vue'
 
 const { locale, t } = useI18n()
 const uiLocale = computed(() => (locale.value === 'cs' ? cs : en))

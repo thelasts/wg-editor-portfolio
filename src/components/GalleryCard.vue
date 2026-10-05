@@ -18,13 +18,7 @@
       }" class="mx-auto w-full max-w-5xl" fade arrows dots loop @click.capture="resetAutoplayOnControl">
       <div class="relative w-full overflow-hidden rounded-lg border border-black/10 bg-black/5 shadow-sm dark:border-white/10 dark:bg-white/5"
         :style="{ aspectRatio: `${width} / ${height}` }">
-        <span v-if="!loadedAssets.has(item.src)"
-          class="pointer-events-none absolute inset-0 z-10 grid place-items-center" aria-hidden="true">
-          <span
-            class="grid size-12 place-items-center rounded-full border border-black/10 bg-white/85 text-highlight shadow-md backdrop-blur-sm dark:border-white/10 dark:bg-eerie-black/85">
-            <UIcon name="i-lucide-loader-circle" class="size-7 animate-spin motion-reduce:animate-none" />
-          </span>
-        </span>
+        <MediaLoadingIndicator v-if="!loadedAssets.has(item.src)" />
 
         <LazyImage :src="item.src" :alt="item.alt" :width="width" :height="height" root-margin="300px 100%"
           class="block h-full w-full cursor-pointer object-cover transition-opacity duration-300 motion-reduce:transition-none"
@@ -42,6 +36,7 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from 'vue'
 import LazyImage from '@/components/LazyImage.vue'
+import MediaLoadingIndicator from '@/components/MediaLoadingIndicator.vue'
 
 export interface GalleryAsset {
   src: string
