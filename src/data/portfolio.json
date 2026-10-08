@@ -1,0 +1,186 @@
+{
+  "contentLinks": {
+    "anniversary": [
+      {
+        "label": "Anniversary Merch Discounts",
+        "to": "https://worldoftanks.eu/en/news/merchandise/fragstore-august-2026/"
+      }
+    ],
+    "weeklySales": [
+      {
+        "label": "Strv K, Kirovets-1 & Panther 8,8",
+        "to": "https://worldoftanks.eu/en/news/specials/strv-k-kirovets-1-panther-mit-8-8-cm-may-2026/"
+      },
+      {
+        "label": "Type 59, Tiger-Maus & GSOR 1010 FB",
+        "to": "https://worldoftanks.eu/en/news/specials/type-59-tiger-maus-gsor-1010-fb-may-2026/"
+      }
+    ],
+    "twitch": [
+      {
+        "label": "Twitch Drops Guide",
+        "to": "https://worldoftanks.com/en/news/guides-reviews/twitch-drops-guide/"
+      }
+    ],
+    "tikTok": [
+      {
+        "label": "TikTok Drops Guide",
+        "to": "https://worldoftanks.com/en/news/guides-reviews/tiktok-drops-guide/"
+      }
+    ],
+    "salute": [
+      {
+        "label": "May",
+        "to": "https://worldoftanks.com/en/news/specials/wot-salute-may-2026/"
+      },
+      {
+        "label": "June",
+        "to": "https://worldoftanks.com/en/news/specials/wot-salute-june-2026/"
+      },
+      {
+        "label": "July",
+        "to": "https://worldoftanks.com/en/news/specials/wot-salute-july-2026/"
+      },
+      {
+        "label": "August",
+        "to": "https://worldoftanks.com/en/news/specials/wot-salute-august-2026/"
+      },
+      {
+        "label": "September",
+        "to": "https://worldoftanks.com/en/news/specials/wot-salute-september-2026/"
+      }
+    ],
+    "steam": [
+      {
+        "label": "Steel Hunter Relaunch",
+        "to": "https://store.steampowered.com/news/app/1407200/view/685254577766793307?l=english"
+      },
+      {
+        "label": "Upgraded Visuals/Sound v2.4",
+        "to": "https://store.steampowered.com/news/app/1407200/view/692016318956699797?l=english"
+      }
+    ]
+  },
+  "contacts": [
+    {
+      "name": "Email",
+      "icon": "i-lucide-mail",
+      "to": "mailto:khomambe@proton.me?subject=portfolio",
+      "external": false
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "i-lucide-linkedin",
+      "to": "https://www.linkedin.com/in/aleksandr-khomutov/",
+      "external": true
+    },
+    {
+      "name": "Telegram",
+      "icon": "i-lucide-send",
+      "to": "https://t.me/khomambe",
+      "external": true
+    },
+    {
+      "name": "WhatsApp",
+      "icon": "i-simple-icons-whatsapp",
+      "to": "https://wa.me/420774066925",
+      "external": true
+    },
+    {
+      "name": "Instagram",
+      "icon": "i-simple-icons-instagram",
+      "to": "https://www.instagram.com/khomambe",
+      "external": true
+    }
+  ],
+  "promoScreens": [
+    {
+      "src": "promo/promo-BoosteroidStart-1jul2026-2026-09-22-14_08_10.webp",
+      "alt": "Boosteroid promo"
+    },
+    {
+      "src": "promo/promo-BP20-Push-30jul2026-2026-09-22-14_07_20.webp",
+      "alt": "Battle Pass promo, progress push"
+    },
+    {
+      "src": "promo/promo-BPSpecial-Bundles-27jul2026-2026-09-22-14_07_05.webp",
+      "alt": "Battle Pass special promo"
+    },
+    {
+      "src": "promo/promo-equalize-june-2026-ep1-2026-09-22-14_06_52.webp",
+      "alt": "Arcade Cabinet's Equalize promo"
+    },
+    {
+      "src": "promo/promo-Frontline261-3may2026-2026-09-22-14_07_29.webp",
+      "alt": "Frontline promo, intro (1/2)"
+    },
+    {
+      "src": "promo/promo-Frontline261-3may2026-2026-09-22-14_07_47.webp",
+      "alt": "Frontline promo, bundles (2/2)"
+    },
+    {
+      "src": "promo/promo-steel-hunter-june-2026-2026-09-22-14_03_43.webp",
+      "alt": "Steel Hunter promo"
+    },
+    {
+      "src": "promo/promoscreens-internal-PRMP-BP20-LastCall-25aug2026-2026-09-23-02_53_08.webp",
+      "alt": "Battle Pass promo, last call"
+    }
+  ],
+  "newsletters": [
+    {
+      "id": "battle-pass-reloaded-duke-nukem",
+      "title": "Battle Pass Reloaded: Duke Nukem",
+      "descriptionKey": "contentShowcase.newsletters.dukeNukemDescription",
+      "src": "email/mail-dukenukem.webp",
+      "alt": "Battle Pass Reloaded: Duke Nukem newsletter.",
+      "width": 588,
+      "height": 2170
+    },
+    {
+      "id": "battle-pass-special-far-cry",
+      "title": "Battle Pass Special: Far Cry",
+      "descriptionKey": "contentShowcase.newsletters.farCryDescription",
+      "src": "email/mail-farcry.webp",
+      "alt": "Battle Pass Special: Far Cry newsletter.",
+      "width": 582,
+      "height": 2250
+    }
+  ],
+  "skills": [
+    {
+      "id": "f2p-game-publishing",
+      "title": "F2P Game Publishing",
+      "descriptionKey": "skills.f2pGamePublishingDescription",
+      "icon": "i-lucide-gamepad-2"
+    },
+    {
+      "id": "content-skill",
+      "title": "Content",
+      "descriptionKey": "skills.contentDescription",
+      "icon": "i-lucide-pen-line"
+    },
+    {
+      "id": "technical-skill",
+      "title": "Technical",
+      "descriptionKey": "skills.technicalDescription",
+      "icon": "i-lucide-code-xml"
+    },
+    {
+      "id": "communication-teamwork",
+      "title": "Communication & Teamwork",
+      "descriptionKey": "skills.communicationTeamworkDescription",
+      "icon": "i-lucide-messages-square"
+    },
+    {
+      "id": "international-workplace",
+      "title": "International Workplace",
+      "descriptionKey": "skills.internationalWorkplaceDescription",
+      "icon": "i-lucide-globe-2",
+      "image": {
+        "src": "wgboost.webp",
+        "alt": "Three attendees posing in front of a Wargaming and WG Boost event backdrop."
+      }
+    }
+  ]
+}

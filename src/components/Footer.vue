@@ -21,7 +21,7 @@
       <UButton class="footer-icon-button" icon="i-lucide-linkedin" color="neutral" variant="ghost" size="xl" square
         to="https://www.linkedin.com/in/aleksandr-khomutov/" target="_blank" rel="noopener noreferrer"
         aria-label="LinkedIn" :ui="iconUi" />
-      <span class="text-muted text-lg align-[8px] select-none"> | </span>
+      <span class="footer-separator"> | </span>
       <UButton class="footer-icon-button" color="neutral" variant="ghost" size="xl" square to="https://wargaming.net/"
         target="_blank" rel="noopener noreferrer" aria-label="Wargaming.net">
         <span class="footer-brand-icon footer-brand-icon--wargaming" aria-hidden="true" />
@@ -29,12 +29,6 @@
       <UButton class="footer-icon-button" color="neutral" variant="ghost" size="xl" square to="https://worldoftanks.eu/"
         target="_blank" rel="noopener noreferrer" aria-label="World of Tanks">
         <span class="footer-brand-icon footer-brand-icon--tanks" aria-hidden="true" />
-      </UButton>
-      <span class="text-muted text-lg align-[8px] select-none"> | </span>
-      <UButton class="footer-icon-button" color="neutral" variant="ghost" size="xl" square
-        to="https://www.flaticon.com/authors/itim2101" target="_blank" rel="noopener noreferrer"
-        aria-label="Vehicle icons by itim2101 on Flaticon">
-        <span class="footer-brand-icon footer-brand-icon--flaticon" aria-hidden="true" />
       </UButton>
     </template>
   </UFooter>
@@ -55,6 +49,13 @@ const iconUi = {
 </script>
 
 <style scoped>
+.footer-separator {
+  color: var(--ui-text-muted);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  user-select: none;
+}
+
 .footer-icon-button {
   transition:
     color 150ms ease,

@@ -3,7 +3,7 @@
     class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/95 text-base text-eerie-black shadow-sm backdrop-blur transition-colors duration-300 sm:text-2xl dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
     <template #left>
       <a class="flex min-w-0 items-center gap-2 font-semibold tracking-tight" href="#overview">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
           class="shrink-0">
           <path d="M13 7 8.7 2.7a2.41 2.41 0 0 0-3.4 0L2.7 5.3a2.41 2.41 0 0 0 0 3.4L7 13" />
@@ -14,7 +14,11 @@
             d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" />
           <path d="m15 5 4 4" />
         </svg>
-        <span class="page-title truncate">{{ t('site.title') }}</span>
+        <span class="page-title truncate">{{ t('site.title') }}</span> -->
+        <AsciiArt piece="typewriter" :options="{
+          prefix: 'internship ',
+          phrases: ['portfolio', 'showcase', 'portfolio', 'overview'],
+        }" label="Internship portfolio" />
       </a>
     </template>
 
@@ -37,10 +41,12 @@
   <nav
     class="fixed left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center overflow-x-auto rounded-xl border border-black/10 bg-white/90 p-1 shadow-lg backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/90"
     style="bottom: max(0.75rem, env(safe-area-inset-bottom))" :aria-label="t('controls.onThisPage')">
-    <a v-for="({ id, label, icon }) in sectionDefinitions" :key="id" :href="`#${id}`"
+    <a v-for="{ id, label, icon } in sectionDefinitions" :key="id" :href="`#${id}`"
       class="flex size-12 shrink-0 touch-manipulation items-center justify-center rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight"
-      :class="activeSection === id ? 'bg-highlight/10 text-highlight' : 'text-muted hover:bg-black/5 dark:hover:bg-white/10'"
-      :aria-label="t(label)" :aria-current="activeSection === id ? 'location' : undefined">
+      :class="activeSection === id
+          ? 'bg-highlight/10 text-highlight'
+          : 'text-muted hover:bg-black/5 dark:hover:bg-white/10'
+        " :aria-label="t(label)" :aria-current="activeSection === id ? 'location' : undefined">
       <UIcon :name="icon" class="pointer-events-none size-7" aria-hidden="true" />
       <span class="sr-only">{{ t(label) }}</span>
     </a>
@@ -52,6 +58,7 @@ import type { NavigationMenuItem } from '@nuxt/ui'
 import { onBeforeUnmount, onMounted, ref, watchEffect } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import AsciiArt from '@/components/AsciiArt.vue'
 import LocaleSwitcher from '@/components/LocaleSwitcher.vue'
 import NavBar from '@/components/NavBar.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
@@ -70,13 +77,14 @@ let sectionObserver: IntersectionObserver | undefined
 watchEffect(() => {
   navigationItems.value = [
     sectionDefinitions.map((section) => {
-      const children = 'children' in section
-        ? section.children.map((child) => ({
-          label: 'translated' in child && child.translated ? t(child.label) : child.label,
-          icon: child.icon,
-          to: `#${child.id}`,
-        }))
-        : undefined
+      const children =
+        'children' in section
+          ? section.children.map((child) => ({
+            label: 'translated' in child && child.translated ? t(child.label) : child.label,
+            icon: child.icon,
+            to: `#${child.id}`,
+          }))
+          : undefined
 
       return {
         id: section.id,

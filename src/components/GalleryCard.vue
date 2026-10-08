@@ -16,14 +16,20 @@
         dot: 'h-1.5 w-3 rounded-full bg-black/20 data-[state=active]:w-6 data-[state=active]:bg-highlight dark:bg-white/25 dark:data-[state=active]:bg-highlight sm:w-5 sm:data-[state=active]:w-8',
         next: 'static order-3 translate-y-0',
       }" class="mx-auto w-full max-w-5xl" fade arrows dots loop @click.capture="resetAutoplayOnControl">
-      <div class="relative w-full overflow-hidden rounded-lg border border-black/10 bg-black/5 shadow-sm dark:border-white/10 dark:bg-white/5"
+      <div
+        class="relative w-full overflow-hidden rounded-lg border border-black/10 bg-black/5 shadow-sm dark:border-white/10 dark:bg-white/5"
         :style="{ aspectRatio: `${width} / ${height}` }">
         <MediaLoadingIndicator v-if="!loadedAssets.has(item.src)" />
 
         <LazyImage :src="item.src" :alt="item.alt" :width="width" :height="height" root-margin="300px 100%"
           class="block h-full w-full cursor-pointer object-cover transition-opacity duration-300 motion-reduce:transition-none"
-          :class="loadedAssets.has(item.src) ? 'opacity-100' : 'opacity-0'"
-          @load="markAssetLoaded(item.src)" @click="emit('itemClick', item, index)" />
+          :class="loadedAssets.has(item.src) ? 'opacity-100' : 'opacity-0'" @load="markAssetLoaded(item.src)"
+          @click="emit('itemClick', item, index)" />
+
+        <button type="button" class="gallery-card__edge-control gallery-card__edge-control--previous"
+          :aria-label="`${label}: previous slide`" @click.stop="moveSlide('previous')" />
+        <button type="button" class="gallery-card__edge-control gallery-card__edge-control--next"
+          :aria-label="`${label}: next slide`" @click.stop="moveSlide('next')" />
       </div>
     </UCarousel>
 
@@ -79,4 +85,40 @@ function resetAutoplayOnControl(event: MouseEvent) {
 
   if (isControl) carousel.value?.emblaApi?.plugins().autoplay?.reset()
 }
+
+function moveSlide(direction: 'previous' | 'next') {
+  const api = carousel.value?.emblaApi
+  if (!api) return
+
+  if (direction === 'previous') api.scrollPrev()
+  else api.scrollNext()
+
+  api.plugins().autoplay?.reset()
+}
 </script>
+
+<style scoped>
+.gallery-card__edge-control {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  bottom: 0;
+  width: 49%;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+}
+
+.gallery-card__edge-control--previous {
+  left: 0;
+}
+
+.gallery-card__edge-control--next {
+  right: 0;
+}
+
+.gallery-card__edge-control:focus-visible {
+  outline: 2px solid var(--ui-primary);
+  outline-offset: -3px;
+}
+</style>

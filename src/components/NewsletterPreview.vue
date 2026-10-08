@@ -2,18 +2,17 @@
   <div ref="container" class="newsletter-preview relative min-h-72 overflow-hidden bg-black/5 dark:bg-white/5">
     <div ref="viewport" class="h-[min(70vh,48rem)] overflow-x-hidden overflow-y-auto scroll-smooth"
       :aria-label="`${alt} preview.`" tabindex="0">
-      <LazyImage :src="src" :alt="alt" :width="width" :height="height"
-        class="block h-auto w-full" @load="maybeShowScrollHint" />
+      <LazyImage :src="src" :alt="alt" :width="width" :height="height" class="block h-auto w-full"
+        @load="maybeShowScrollHint" />
     </div>
 
     <Transition name="scroll-hint">
       <span v-if="showScrollHint" class="newsletter-preview__scroll-hint"
-        :class="{ 'newsletter-preview__scroll-hint--dimmed': isScrollHintDimmed }"
-        :title="t('controls.scrollNewsletter')">
-        <span class="newsletter-preview__scroll-grip">
-          <UIcon name="i-lucide-chevrons-up-down" class="size-5" aria-hidden="true" />
-        </span>
-        <span class="sr-only">{{ t('controls.scrollNewsletter') }}</span>
+        :class="{ 'newsletter-preview__scroll-hint--dimmed': isScrollHintDimmed }">
+        <UTooltip :text="t('controls.scrollNewsletter')" :content="{ side: 'right' }" arrow>
+          <UButton class="newsletter-preview__scroll-info cursor-pointer" icon="i-lucide-info" color="neutral"
+            variant="ghost" size="xl" :aria-label="t('controls.scrollNewsletter')" />
+        </UTooltip>
       </span>
     </Transition>
   </div>
@@ -53,7 +52,7 @@ function maybeShowScrollHint() {
   intersectionObserver?.disconnect()
   hintTimer = window.setTimeout(() => {
     isScrollHintDimmed.value = true
-  }, 1800)
+  }, 900)
 }
 
 onMounted(() => {
@@ -77,49 +76,35 @@ onBeforeUnmount(() => {
 .newsletter-preview__scroll-hint {
   position: absolute;
   z-index: 10;
-  bottom: 1rem;
-  left: 50%;
-  pointer-events: none;
-  transform: translateX(-50%);
+  top: 1rem;
+  left: 1rem;
   transition: opacity 150ms ease;
 }
 
-.newsletter-preview__scroll-grip {
-  display: grid;
-  width: 2.5rem;
-  height: 2.5rem;
-  place-items: center;
-  border: 2px solid var(--ui-text-muted);
-  border-radius: 9999px;
+.newsletter-preview__scroll-info {
   color: var(--ui-text-muted);
-  background-color: var(--ui-bg);
-  box-shadow: 0 4px 12px rgb(0 0 0 / 24%);
-  animation: newsletter-scroll-hint 900ms ease-in-out 2;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  transition: color 150ms ease;
+}
+
+.newsletter-preview__scroll-info:hover,
+.newsletter-preview__scroll-info:focus-visible {
+  color: var(--ui-text-highlighted);
+  background-color: transparent !important;
 }
 
 .newsletter-preview__scroll-hint--dimmed {
   opacity: 0.5;
 }
 
+.newsletter-preview__scroll-hint--dimmed:hover,
+.newsletter-preview__scroll-hint--dimmed:focus-within {
+  opacity: 1;
+}
+
 .scroll-hint-enter-from,
 .scroll-hint-leave-to {
   opacity: 0;
-}
-
-@keyframes newsletter-scroll-hint {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.14);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .newsletter-preview__scroll-grip {
-    animation: none;
-  }
 }
 </style>

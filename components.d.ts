@@ -11,9 +11,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    AsciiArt: typeof import('./src/components/AsciiArt.vue')['default']
     ContactMarquee: typeof import('./src/components/ContactMarquee.vue')['default']
     ContentCard: typeof import('./src/components/ContentCard.vue')['default']
     ContentMedia: typeof import('./src/components/ContentMedia.vue')['default']
+    ContentSection: typeof import('./src/components/sections/ContentSection.vue')['default']
     ContentSplitter: typeof import('./src/components/ContentSplitter.vue')['default']
     ContentVideo: typeof import('./src/components/ContentVideo.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']
@@ -25,9 +27,12 @@ declare module 'vue' {
     MediaLoadingIndicator: typeof import('./src/components/MediaLoadingIndicator.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     NewsletterPreview: typeof import('./src/components/NewsletterPreview.vue')['default']
+    OverviewSection: typeof import('./src/components/sections/OverviewSection.vue')['default']
     SectionCard: typeof import('./src/components/SectionCard.vue')['default']
     SkillsColumns: typeof import('./src/components/SkillsColumns.vue')['default']
+    SkillsSection: typeof import('./src/components/sections/SkillsSection.vue')['default']
     ThemeSwitcher: typeof import('./src/components/ThemeSwitcher.vue')['default']
+    ToolsSection: typeof import('./src/components/sections/ToolsSection.vue')['default']
     UApp: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/App.vue')['default']
     UButton: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Button.vue')['default']
     UCard: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Card.vue')['default']
@@ -44,6 +49,7 @@ declare module 'vue' {
     UProgress: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Progress.vue')['default']
     USeparator: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']
     USplitter: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Splitter.vue')['default']
+    UTooltip: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Tooltip.vue')['default']
     VehiclePattern: typeof import('./src/components/VehiclePattern.vue')['default']
   }
 }
