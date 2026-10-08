@@ -1,6 +1,10 @@
 <template>
-  <UHeader :title="t('site.title')" :toggle="false" :ui="headerUi"
-    class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/95 text-base text-eerie-black shadow-sm backdrop-blur transition-colors duration-300 sm:text-2xl dark:border-white/10 dark:bg-eerie-black/95 dark:text-white">
+  <UHeader
+    :title="t('site.title')"
+    :toggle="false"
+    :ui="headerUi"
+    class="sticky top-0 z-50 h-auto w-full border-x-0 border-t-0 border-b border-black/10 bg-white/85 text-base text-eerie-black shadow-sm backdrop-blur transition-colors duration-300 sm:text-2xl md:bg-white md:backdrop-blur-none dark:border-white/10 dark:bg-eerie-black/85 dark:text-white md:dark:bg-eerie-black"
+  >
     <template #left>
       <a class="flex min-w-0 items-center gap-2 font-semibold tracking-tight" href="#overview">
         <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -15,10 +19,14 @@
           <path d="m15 5 4 4" />
         </svg>
         <span class="page-title truncate">{{ t('site.title') }}</span> -->
-        <AsciiArt piece="typewriter" :options="{
-          prefix: 'internship ',
-          phrases: ['portfolio', 'showcase', 'portfolio', 'overview'],
-        }" label="Internship portfolio" />
+        <AsciiArt
+          piece="typewriter"
+          :options="{
+            prefix: 'internship ',
+            phrases: ['portfolio', 'showcase', 'portfolio', 'overview'],
+          }"
+          label="Internship portfolio"
+        />
       </a>
     </template>
 
@@ -28,9 +36,20 @@
     </template>
 
     <template #bottom>
-      <UProgress :model-value="pageProgress" :max="100" color="#f25322" size="xs"
-        :aria-label="t('controls.pageProgress')" :ui="{ base: 'rounded-none bg-black/10 dark:bg-white/10' }" />
-      <div class="hidden border-t border-black/5 bg-white/95 md:block dark:border-white/5 dark:bg-eerie-black/95">
+      <div
+        class="page-progress h-0.5 overflow-hidden bg-black/10 dark:bg-white/10"
+        aria-hidden="true"
+      >
+        <span
+          class="page-progress__bar block size-full bg-highlight"
+          :style="
+            supportsScrollTimeline ? undefined : { transform: `scaleX(${pageProgress / 100})` }
+          "
+        />
+      </div>
+      <div
+        class="hidden border-t border-black/5 bg-white md:block dark:border-white/5 dark:bg-eerie-black"
+      >
         <div class="mx-auto flex max-w-6xl justify-start px-6 py-2">
           <NavBar :items="navigationItems" orientation="horizontal" />
         </div>
@@ -39,15 +58,23 @@
   </UHeader>
 
   <nav
-    v-auto-animate
-    class="fixed left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center overflow-x-auto rounded-xl border border-black/10 bg-white/90 p-1 shadow-lg backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/90"
-    style="bottom: max(0.75rem, env(safe-area-inset-bottom))" :aria-label="t('controls.onThisPage')">
-    <a v-for="{ id, label, icon } in sectionDefinitions" :key="id" :href="`#${id}`"
+    class="fixed left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center overflow-x-auto rounded-xl border border-black/10 bg-white/85 p-1 shadow-lg backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/85"
+    style="bottom: max(0.75rem, env(safe-area-inset-bottom))"
+    :aria-label="t('controls.onThisPage')"
+  >
+    <a
+      v-for="{ id, label, icon } in sectionDefinitions"
+      :key="id"
+      :href="`#${id}`"
       class="flex size-12 shrink-0 touch-manipulation items-center justify-center rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-highlight"
-      :class="activeSection === id
+      :class="
+        activeSection === id
           ? 'bg-highlight/10 text-highlight'
           : 'text-muted hover:bg-black/5 dark:hover:bg-white/10'
-        " :aria-label="t(label)" :aria-current="activeSection === id ? 'location' : undefined">
+      "
+      :aria-label="t(label)"
+      :aria-current="activeSection === id ? 'location' : undefined"
+    >
       <UIcon :name="icon" class="pointer-events-none size-7" aria-hidden="true" />
       <span class="sr-only">{{ t(label) }}</span>
     </a>
@@ -72,6 +99,7 @@ const { t } = useI18n()
 const activeSection = ref<SectionId>('overview')
 const navigationItems = ref<NavigationMenuItem[][]>([[]])
 const pageProgress = ref(0)
+const supportsScrollTimeline = CSS.supports('animation-timeline: scroll()')
 let animationFrame: number | undefined
 let sectionObserver: IntersectionObserver | undefined
 
@@ -81,10 +109,10 @@ watchEffect(() => {
       const children =
         'children' in section
           ? section.children.map((child) => ({
-            label: 'translated' in child && child.translated ? t(child.label) : child.label,
-            icon: child.icon,
-            to: `#${child.id}`,
-          }))
+              label: 'translated' in child && child.translated ? t(child.label) : child.label,
+              icon: child.icon,
+              to: `#${child.id}`,
+            }))
           : undefined
 
       return {
@@ -119,7 +147,7 @@ function scheduleProgressUpdate() {
 }
 
 onMounted(() => {
-  updateProgress()
+  if (!supportsScrollTimeline) updateProgress()
 
   sectionObserver = new IntersectionObserver(
     (entries) => {
@@ -134,8 +162,10 @@ onMounted(() => {
     if (element) sectionObserver.observe(element)
   }
 
-  window.addEventListener('scroll', scheduleProgressUpdate, { passive: true })
-  window.addEventListener('resize', scheduleProgressUpdate)
+  if (!supportsScrollTimeline) {
+    window.addEventListener('scroll', scheduleProgressUpdate, { passive: true })
+    window.addEventListener('resize', scheduleProgressUpdate)
+  }
 })
 
 onBeforeUnmount(() => {
@@ -145,3 +175,27 @@ onBeforeUnmount(() => {
   if (animationFrame !== undefined) window.cancelAnimationFrame(animationFrame)
 })
 </script>
+
+<style scoped>
+@keyframes grow-page-progress {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.page-progress__bar {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+@supports (animation-timeline: scroll()) {
+  .page-progress__bar {
+    animation: grow-page-progress auto linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <UPageColumns v-auto-animate as="ul" class="mt-4 gap-4 space-y-4 sm:gap-6 sm:space-y-6">
+  <UPageColumns as="ul" class="mt-4 gap-4 space-y-4 sm:gap-6 sm:space-y-6">
     <UPageCard
       v-for="skill in skills"
       :key="skill.title"

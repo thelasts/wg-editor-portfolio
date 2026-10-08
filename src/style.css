@@ -51,6 +51,14 @@
     font-family:
       ui-monospace, 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', monospace;
   }
+
+  .technical-label {
+    font-size: clamp(0.8125rem, 0.75rem + 0.4167vw, var(--technical-label-max-size, 1rem));
+  }
+
+  .technical-label--caption {
+    --technical-label-max-size: 0.875rem;
+  }
 }
 
 @layer components {
@@ -111,56 +119,16 @@
     top: 0;
     width: 100%;
     height: 100vh;
-  }
-
-  .vehicle-pattern__canvas {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: flex;
-    width: calc(86.603vw + 50vh + 12rem);
-    height: calc(50vw + 86.603vh + 12rem);
-    flex-direction: column;
-    justify-content: space-around;
-    padding-block: 2rem;
+    background-image: var(--vehicle-pattern-light);
+    background-position: center;
+    background-repeat: repeat;
+    background-size: 1024px 1024px;
     opacity: 0.055;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    transform-origin: center;
   }
 
-  .vehicle-pattern__row {
-    display: flex;
-    width: max-content;
-    transform: translate3d(var(--row-shift), 0, 0) scale(var(--row-scale));
-    transform-origin: left center;
-  }
-
-  .vehicle-pattern__group {
-    display: flex;
-    flex: none;
-    align-items: center;
-    gap: clamp(1.35rem, 2.25vw, 3.25rem);
-    padding-inline-end: clamp(1.35rem, 2.25vw, 3.25rem);
-  }
-
-  .vehicle-pattern__icon {
-    width: clamp(3rem, 4.5vw, 5.75rem);
-    height: auto;
-    flex: none;
-    mix-blend-mode: multiply;
-  }
-
-  .vehicle-pattern__icon--mirrored {
-    transform: scaleX(-1);
-  }
-
-  .dark .vehicle-pattern__canvas {
+  .dark .vehicle-pattern__field {
+    background-image: var(--vehicle-pattern-dark);
     opacity: 0.07;
-  }
-
-  .dark .vehicle-pattern__icon {
-    filter: invert(1);
-    mix-blend-mode: screen;
   }
 
   .reveal-on-scroll {
@@ -179,6 +147,10 @@
   .reveal-on-scroll.is-revealed {
     opacity: 1;
     transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  .reveal-on-scroll.reveal-complete {
+    transform: none;
   }
 
   .heading-anchor {

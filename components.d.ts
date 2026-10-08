@@ -46,7 +46,6 @@ declare module 'vue' {
     UNavigationMenu: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/NavigationMenu.vue')['default']
     UPageCard: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/PageCard.vue')['default']
     UPageColumns: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/PageColumns.vue')['default']
-    UProgress: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Progress.vue')['default']
     USeparator: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Separator.vue')['default']
     USplitter: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Splitter.vue')['default']
     UTooltip: typeof import('./node_modules/.pnpm/@nuxt+ui@4.11.2_7690ea3bae13a3803f58eb4a9451069c/node_modules/@nuxt/ui/dist/runtime/components/Tooltip.vue')['default']
