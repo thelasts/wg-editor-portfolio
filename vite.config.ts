@@ -16,6 +16,18 @@ export default defineConfig(({ mode }) => {
         icon: {
           clientBundle: {
             scan: true,
+            icons: [
+              'i-lucide-code-xml',
+              'i-lucide-gamepad-2',
+              'i-lucide-globe-2',
+              'i-lucide-linkedin',
+              'i-lucide-mail',
+              'i-lucide-messages-square',
+              'i-lucide-pen-line',
+              'i-lucide-send',
+              'i-simple-icons-instagram',
+              'i-simple-icons-whatsapp',
+            ],
           },
         },
         experimental: {
