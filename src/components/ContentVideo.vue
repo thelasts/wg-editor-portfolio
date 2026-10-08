@@ -1,5 +1,5 @@
 <template>
-  <span ref="container" class="relative block max-h-[32rem] max-w-full overflow-hidden">
+  <span ref="container" v-auto-animate class="relative block max-h-[32rem] max-w-full overflow-hidden">
     <LazyImage
       :src="thumbnailSrc"
       :alt="alt"

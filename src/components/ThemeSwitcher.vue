@@ -23,46 +23,26 @@
       </svg>
     </button>
 
-    <button type="button" :title="t('controls.system')" :aria-label="t('controls.system')"
-      :aria-pressed="theme === 'system'"
-      class="size-6 cursor-pointer transition-transform duration-75 ease-linear xl:hover:scale-110"
-      @click="theme = 'system'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-        class="lucide lucide-monitor preview-icon transition-opacity"
-        :class="theme === 'system' ? 'opacity-100' : 'opacity-30'" aria-hidden="true">
-        <rect width="20" height="14" x="2" y="3" rx="2" />
-        <line x1="8" x2="16" y1="21" y2="21" />
-        <line x1="12" x2="12" y1="17" y2="21" />
-      </svg>
-    </button>
   </div>
 </template>
 
 
 <script setup lang="ts">
-import { onBeforeUnmount, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-type Theme = 'light' | 'dark' | 'system'
+type Theme = 'light' | 'dark'
 
 const { t } = useI18n()
-const media = window.matchMedia('(prefers-color-scheme: dark)')
 const storedTheme = localStorage.getItem('theme')
 const theme = ref<Theme>(
-  storedTheme === 'light' || storedTheme === 'dark' || storedTheme === 'system'
-    ? storedTheme
-    : 'system',
+  storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'dark',
 )
 
 function applyTheme() {
-  const isDark = theme.value === 'dark' || (theme.value === 'system' && media.matches)
+  const isDark = theme.value === 'dark'
   document.documentElement.classList.toggle('dark', isDark)
   document.documentElement.style.colorScheme = isDark ? 'dark' : 'light'
-}
-
-function handleSystemThemeChange() {
-  if (theme.value === 'system') applyTheme()
 }
 
 watch(
@@ -73,7 +53,4 @@ watch(
   },
   { immediate: true },
 )
-
-media.addEventListener('change', handleSystemThemeChange)
-onBeforeUnmount(() => media.removeEventListener('change', handleSystemThemeChange))
 </script>

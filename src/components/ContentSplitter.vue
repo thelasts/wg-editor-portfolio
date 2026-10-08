@@ -1,5 +1,5 @@
 <template>
-    <UCollapsible v-model:open="isOpen" :unmount-on-hide="true" class="content-comparison">
+    <UCollapsible v-model:open="isOpen" v-auto-animate :unmount-on-hide="true" class="content-comparison">
         <template #default>
             <UButton type="button" :label="t('controls.openSplitter')" color="neutral" variant="outline"
                 icon="i-lucide-arrow-right-left" trailing-icon="i-lucide-chevron-down" block

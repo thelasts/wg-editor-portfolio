@@ -1,5 +1,6 @@
 <template>
   <UMarquee
+    v-auto-animate
     class="main-bg rounded-2xl border border-black/10 px-2 py-2 md:hidden dark:border-white/10"
     pause-on-hover
     :overlay="false"
@@ -22,6 +23,7 @@
   </UMarquee>
 
   <div
+    v-auto-animate
     class="main-bg hidden items-center justify-center gap-4 rounded-2xl border border-black/10 px-2 py-2 md:flex dark:border-white/10"
     aria-label="Contact links"
   >

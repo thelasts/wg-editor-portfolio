@@ -93,7 +93,7 @@ onBeforeUnmount(() => {
   max-width: min(44ch, calc(100vw - 8rem));
   overflow: hidden;
   color: inherit;
-  font-size: clamp(0.75rem, 1.25vw, 1rem);
+  font-size: clamp(0.875rem, 1.75vw, 1.25rem);
   font-weight: 600;
   text-align: left;
 }

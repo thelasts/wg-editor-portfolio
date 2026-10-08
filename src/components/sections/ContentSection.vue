@@ -92,7 +92,7 @@
     </ContentCard>
     <ContentCard anchor-id="newsletters" title="Newsletters"
       description="Email, game launchers' galleries and notifications">
-      <div class="space-y-4">
+      <div v-auto-animate class="space-y-4">
         <UPageCard v-for="(newsletter, index) in newsletters" :key="newsletter.title" :title="newsletter.title"
           :description="newsletter.description" icon="i-lucide-mail" orientation="horizontal" :reverse="index === 1"
           variant="subtle"

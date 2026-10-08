@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import ui from '@nuxt/ui/vue-plugin'
 
 import App from './App.vue'
@@ -18,4 +19,4 @@ const i18n = createI18n({
   },
 })
 
-createApp(App).use(i18n).use(ui).directive('reveal', reveal).mount('#app')
+createApp(App).use(i18n).use(ui).use(autoAnimatePlugin).directive('reveal', reveal).mount('#app')

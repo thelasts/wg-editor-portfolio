@@ -1,7 +1,7 @@
 {
   "name": "WoT Editor Internship Portfolio",
   "short_name": "Internship Portfolio",
-  "description": "World of Tanks editorial internship portfolio.",
+  "description": "Portfolio of internship in World of Tanks Publishing Content Team. March-September 2026",
   "lang": "en",
   "start_url": "./",
   "scope": "./",
@@ -26,6 +26,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "_social_1200x630.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "WoT Editor Internship Portfolio"
     }
   ]
 }

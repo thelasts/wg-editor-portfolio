@@ -1,20 +1,18 @@
 <template>
-  <div ref="container" class="newsletter-preview relative min-h-72 overflow-hidden bg-black/5 dark:bg-white/5">
+  <div ref="container" v-auto-animate class="newsletter-preview relative min-h-72 overflow-hidden bg-black/5 dark:bg-white/5">
     <div ref="viewport" class="h-[min(70vh,48rem)] overflow-x-hidden overflow-y-auto scroll-smooth"
       :aria-label="`${alt} preview.`" tabindex="0">
       <LazyImage :src="src" :alt="alt" :width="width" :height="height" class="block h-auto w-full"
         @load="maybeShowScrollHint" />
     </div>
 
-    <Transition name="scroll-hint">
-      <span v-if="showScrollHint" class="newsletter-preview__scroll-hint"
-        :class="{ 'newsletter-preview__scroll-hint--dimmed': isScrollHintDimmed }">
-        <UTooltip :text="t('controls.scrollNewsletter')" :content="{ side: 'right' }" arrow>
-          <UButton class="newsletter-preview__scroll-info cursor-pointer" icon="i-lucide-info" color="neutral"
-            variant="ghost" size="xl" :aria-label="t('controls.scrollNewsletter')" />
-        </UTooltip>
-      </span>
-    </Transition>
+    <span v-if="showScrollHint" class="newsletter-preview__scroll-hint"
+      :class="{ 'newsletter-preview__scroll-hint--dimmed': isScrollHintDimmed }">
+      <UTooltip :text="t('controls.scrollNewsletter')" :content="{ side: 'right' }" arrow>
+        <UButton class="newsletter-preview__scroll-info cursor-pointer" icon="i-lucide-info" color="neutral"
+          variant="ghost" size="xl" :aria-label="t('controls.scrollNewsletter')" />
+      </UTooltip>
+    </span>
   </div>
 </template>
 
@@ -103,8 +101,4 @@ onBeforeUnmount(() => {
   opacity: 1;
 }
 
-.scroll-hint-enter-from,
-.scroll-hint-leave-to {
-  opacity: 0;
-}
 </style>

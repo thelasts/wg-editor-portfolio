@@ -1,10 +1,10 @@
 <template>
     <UContainer :id="id" as="figure" class="my-4 max-w-none px-0 sm:px-0 lg:px-0"
         :aria-describedby="description ? descriptionId : undefined">
-        <div class="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center"
+        <div v-auto-animate class="flex flex-col items-stretch justify-center gap-4 sm:flex-row sm:items-center"
             :role="hasRevealMode ? 'group' : undefined"
             :aria-label="hasRevealMode ? description || 'Media selector' : undefined">
-            <component :is="hasRevealMode ? 'button' : 'div'" v-for="(asset, index) in visibleAssets" :key="asset.src"
+            <component v-auto-animate :is="hasRevealMode ? 'button' : 'div'" v-for="(asset, index) in visibleAssets" :key="asset.src"
                 :type="hasRevealMode ? 'button' : undefined"
                 :aria-label="hasRevealMode ? assetButtonLabel(asset, index) : undefined"
                 :aria-pressed="hasRevealMode ? isAssetRevealed(index) : undefined"

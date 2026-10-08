@@ -17,6 +17,7 @@
         next: 'static order-3 translate-y-0',
       }" class="mx-auto w-full max-w-5xl" fade arrows dots loop @click.capture="resetAutoplayOnControl">
       <div
+        v-auto-animate
         class="relative w-full overflow-hidden rounded-lg border border-black/10 bg-black/5 shadow-sm dark:border-white/10 dark:bg-white/5"
         :style="{ aspectRatio: `${width} / ${height}` }">
         <MediaLoadingIndicator v-if="!loadedAssets.has(item.src)" />

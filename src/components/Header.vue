@@ -39,6 +39,7 @@
   </UHeader>
 
   <nav
+    v-auto-animate
     class="fixed left-1/2 z-40 flex max-w-[calc(100vw-1.5rem)] -translate-x-1/2 items-center overflow-x-auto rounded-xl border border-black/10 bg-white/90 p-1 shadow-lg backdrop-blur-xl md:hidden dark:border-white/10 dark:bg-eerie-black/90"
     style="bottom: max(0.75rem, env(safe-area-inset-bottom))" :aria-label="t('controls.onThisPage')">
     <a v-for="{ id, label, icon } in sectionDefinitions" :key="id" :href="`#${id}`"
